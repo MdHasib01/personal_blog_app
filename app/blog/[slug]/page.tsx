@@ -201,6 +201,7 @@ export function generateStaticParams() {
 }
 
 // export const output = "static";
+export const dynamic = "force-static";
 
 // Sample blog data - in a real app, this would come from a database or CMS
 const samplePosts = [
