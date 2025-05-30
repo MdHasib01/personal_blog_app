@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react";
 
-// Sample blog data - moved to top
+// Sample blog data
 const samplePosts = [
   {
     id: "1",
@@ -76,20 +76,26 @@ const samplePosts = [
   },
 ];
 
-// generateStaticParams moved here - before the component
-export async function generateStaticParams() {
+// Define proper types
+type PageProps = {
+  params: {
+    slug: string;
+  };
+};
+
+// Static params generation
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
   return samplePosts.map((post) => ({
     slug: post.id,
   }));
 }
 
+// Metadata generation
 export async function generateMetadata({
   params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> {
+}: PageProps): Promise<Metadata> {
   const post = samplePosts.find((p) => p.id === params.slug);
-  console.log(post);
+
   if (!post) {
     return {
       title: "Post Not Found",
@@ -102,12 +108,12 @@ export async function generateMetadata({
   };
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
+// Main component
+export default function BlogPostPage({ params }: PageProps) {
   const post = samplePosts.find((p) => p.id === params.slug);
 
   if (!post) {
     notFound();
-    return null;
   }
 
   return (
@@ -271,6 +277,3 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     </article>
   );
 }
-
-// Uncomment these if needed for static generation
-// export const dynamic = "force-static";
