@@ -77,7 +77,7 @@ const samplePosts = [
 ];
 
 // generateStaticParams moved here - before the component
-export function generateStaticParams() {
+export async function generateStaticParams() {
   return samplePosts.map((post) => ({
     slug: post.id,
   }));
