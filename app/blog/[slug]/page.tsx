@@ -83,12 +83,8 @@ type PageProps = {
   };
 };
 
-// Static params generation
-// export async function generateStaticParams(): Promise<{ slug: string }[]> {
-//   return samplePosts.map((post) => ({
-//     slug: post.id,
-//   }));
-// }
+// This tells Next.js to render this route dynamically
+export const dynamic = "force-dynamic";
 
 // Metadata generation
 export async function generateMetadata({
