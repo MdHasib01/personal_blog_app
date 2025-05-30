@@ -1,23 +1,37 @@
-import { Metadata } from "next"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Download, Mail } from "lucide-react"
-import Link from "next/link"
+import { Metadata } from "next";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Download, Mail } from "lucide-react";
+import Link from "next/link";
+
+import img from "../assets/avata.png";
 
 export const metadata: Metadata = {
   title: "About Me | Personal Blog & Portfolio",
   description: "Learn more about my background, skills, and interests.",
-}
+};
 
 export default function AboutPage() {
   // Sample skills data
   const skills = [
-    { category: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Redux"] },
-    { category: "Backend", items: ["Node.js", "Express", "MongoDB", "PostgreSQL", "Firebase"] },
-    { category: "Design", items: ["Figma", "Adobe XD", "UI/UX", "Responsive Design"] },
-    { category: "Tools", items: ["Git", "Docker", "Jest", "Webpack", "VS Code"] },
-  ]
+    {
+      category: "Frontend",
+      items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Redux"],
+    },
+    {
+      category: "Backend",
+      items: ["Node.js", "Express", "MongoDB", "PostgreSQL", "Firebase"],
+    },
+    {
+      category: "Design",
+      items: ["Figma", "Adobe XD", "UI/UX", "Responsive Design"],
+    },
+    {
+      category: "Tools",
+      items: ["Git", "Docker", "Jest", "Webpack", "VS Code"],
+    },
+  ];
 
   // Sample timeline data
   const timeline = [
@@ -25,27 +39,31 @@ export default function AboutPage() {
       year: "2023",
       title: "Senior Frontend Developer",
       company: "Tech Solutions Inc.",
-      description: "Leading frontend development for enterprise applications and mentoring junior developers."
+      description:
+        "Leading frontend development for enterprise applications and mentoring junior developers.",
     },
     {
       year: "2021",
       title: "Full Stack Developer",
       company: "Digital Agency Co.",
-      description: "Built and maintained web applications for various clients across different industries."
+      description:
+        "Built and maintained web applications for various clients across different industries.",
     },
     {
       year: "2019",
       title: "Frontend Developer",
       company: "Startup Labs",
-      description: "Developed responsive user interfaces for early-stage startups."
+      description:
+        "Developed responsive user interfaces for early-stage startups.",
     },
     {
       year: "2018",
       title: "Computer Science Degree",
       company: "University of Technology",
-      description: "Graduated with honors, specializing in web technologies and software engineering."
+      description:
+        "Graduated with honors, specializing in web technologies and software engineering.",
     },
-  ]
+  ];
 
   return (
     <div className="container py-12 md:py-16">
@@ -53,7 +71,7 @@ export default function AboutPage() {
       <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
         <div className="relative aspect-square rounded-lg overflow-hidden">
           <Image
-            src="https://images.pexels.com/photos/5990181/pexels-photo-5990181.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            src={img}
             alt="Hasib - Developer portrait"
             fill
             className="object-cover"
@@ -65,12 +83,16 @@ export default function AboutPage() {
             About Me
           </h1>
           <p className="text-lg text-muted-foreground">
-            I'm Hasib, a full-stack developer passionate about creating exceptional digital experiences.
-            With over 5 years of experience, I specialize in building modern web applications that are both functional and beautiful.
+            I'm Hasib, a full-stack developer passionate about creating
+            exceptional digital experiences. With over 5 years of experience, I
+            specialize in building modern web applications that are both
+            functional and beautiful.
           </p>
           <p className="text-muted-foreground">
-            My journey in technology began when I was a teenager, tinkering with HTML and CSS to create simple websites.
-            That curiosity evolved into a career where I now help businesses and individuals bring their ideas to life through code.
+            My journey in technology began when I was a teenager, tinkering with
+            HTML and CSS to create simple websites. That curiosity evolved into
+            a career where I now help businesses and individuals bring their
+            ideas to life through code.
           </p>
           <div className="flex flex-wrap gap-4">
             <Button asChild>
@@ -91,12 +113,16 @@ export default function AboutPage() {
 
       {/* Skills Section */}
       <section className="mb-16">
-        <h2 className="font-playfair text-3xl font-bold mb-8">Skills & Expertise</h2>
+        <h2 className="font-playfair text-3xl font-bold mb-8">
+          Skills & Expertise
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {skills.map((skillGroup) => (
             <Card key={skillGroup.category}>
               <CardContent className="p-6">
-                <h3 className="font-bold text-xl mb-4">{skillGroup.category}</h3>
+                <h3 className="font-bold text-xl mb-4">
+                  {skillGroup.category}
+                </h3>
                 <ul className="space-y-2">
                   {skillGroup.items.map((skill) => (
                     <li key={skill} className="flex items-center">
@@ -113,7 +139,9 @@ export default function AboutPage() {
 
       {/* Timeline Section */}
       <section className="mb-16">
-        <h2 className="font-playfair text-3xl font-bold mb-8">Experience & Education</h2>
+        <h2 className="font-playfair text-3xl font-bold mb-8">
+          Experience & Education
+        </h2>
         <div className="relative border-l border-border pl-8">
           {timeline.map((item, index) => (
             <div key={index} className="mb-12 last:mb-0 relative">
@@ -140,25 +168,30 @@ export default function AboutPage() {
           <div>
             <h3 className="font-bold text-xl mb-4">Interests & Hobbies</h3>
             <p className="text-muted-foreground mb-4">
-              When I'm not in front of a computer, I enjoy hiking, photography, and exploring new places.
-              I'm also an avid reader and particularly enjoy books on technology, science fiction, and philosophy.
+              When I'm not in front of a computer, I enjoy hiking, photography,
+              and exploring new places. I'm also an avid reader and particularly
+              enjoy books on technology, science fiction, and philosophy.
             </p>
             <p className="text-muted-foreground">
-              I believe in continuous learning and regularly take online courses to expand my knowledge in both technical and non-technical areas.
+              I believe in continuous learning and regularly take online courses
+              to expand my knowledge in both technical and non-technical areas.
             </p>
           </div>
           <div>
             <h3 className="font-bold text-xl mb-4">Community & Volunteering</h3>
             <p className="text-muted-foreground mb-4">
-              I'm an active contributor to open-source projects and regularly participate in local tech meetups and conferences.
-              I also volunteer as a mentor for aspiring developers and have taught coding workshops for underrepresented groups in tech.
+              I'm an active contributor to open-source projects and regularly
+              participate in local tech meetups and conferences. I also
+              volunteer as a mentor for aspiring developers and have taught
+              coding workshops for underrepresented groups in tech.
             </p>
             <p className="text-muted-foreground">
-              Giving back to the community that helped me grow is important to me, and I'm always looking for new ways to contribute.
+              Giving back to the community that helped me grow is important to
+              me, and I'm always looking for new ways to contribute.
             </p>
           </div>
         </div>
       </section>
     </div>
-  )
+  );
 }

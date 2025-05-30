@@ -11,9 +11,8 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }): Promise<Metadata> {
-  // In a real app, fetch the post data based on the slug
   const post = samplePosts.find((p) => p.id === params.slug);
-
+  console.log(post);
   if (!post) {
     return {
       title: "Post Not Found",
@@ -30,6 +29,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = samplePosts.find((p) => p.id === params.slug);
 
   if (!post) {
+    <div>Post Not Found</div>;
     notFound();
   }
 

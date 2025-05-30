@@ -1,10 +1,11 @@
-import Link from "next/link"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { ArrowRight, FileCode, Newspaper, User } from "lucide-react"
-import { BlogCard } from "@/components/blog-card"
-import { ProjectCard } from "@/components/project-card"
-import { FeaturedSection } from "@/components/featured-section"
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, FileCode, Newspaper, User } from "lucide-react";
+import { BlogCard } from "@/components/blog-card";
+import { ProjectCard } from "@/components/project-card";
+import { FeaturedSection } from "@/components/featured-section";
+import img from "./assets/avata.png";
 
 export default function Home() {
   // Sample data for the blog and portfolio
@@ -12,8 +13,10 @@ export default function Home() {
     {
       id: "1",
       title: "Building Responsive Websites with Tailwind CSS",
-      excerpt: "Learn how to create beautiful, responsive websites using Tailwind CSS framework.",
-      coverImage: "https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      excerpt:
+        "Learn how to create beautiful, responsive websites using Tailwind CSS framework.",
+      coverImage:
+        "https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       date: "2023-12-10",
       readTime: "5 min",
       category: "Web Development",
@@ -21,8 +24,10 @@ export default function Home() {
     {
       id: "2",
       title: "Next.js 13: The Future of React Applications",
-      excerpt: "Explore the new features and improvements in Next.js 13 and how they change React development.",
-      coverImage: "https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      excerpt:
+        "Explore the new features and improvements in Next.js 13 and how they change React development.",
+      coverImage:
+        "https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       date: "2023-11-28",
       readTime: "6 min",
       category: "Frontend",
@@ -30,20 +35,24 @@ export default function Home() {
     {
       id: "3",
       title: "The Power of TypeScript in Modern Applications",
-      excerpt: "Why TypeScript has become essential for building scalable and maintainable applications.",
-      coverImage: "https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      excerpt:
+        "Why TypeScript has become essential for building scalable and maintainable applications.",
+      coverImage:
+        "https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       date: "2023-11-15",
       readTime: "4 min",
       category: "JavaScript",
     },
-  ]
+  ];
 
   const featuredProjects = [
     {
       id: "1",
       title: "E-commerce Platform",
-      description: "A full-featured e-commerce platform built with Next.js, Stripe, and a headless CMS.",
-      image: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      description:
+        "A full-featured e-commerce platform built with Next.js, Stripe, and a headless CMS.",
+      image:
+        "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       tags: ["Next.js", "TypeScript", "Stripe", "Tailwind CSS"],
       demoUrl: "#",
       repoUrl: "#",
@@ -51,13 +60,15 @@ export default function Home() {
     {
       id: "2",
       title: "Task Management App",
-      description: "A collaborative task management application with real-time updates and team features.",
-      image: "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      description:
+        "A collaborative task management application with real-time updates and team features.",
+      image:
+        "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       tags: ["React", "Firebase", "Material UI", "Redux"],
       demoUrl: "#",
       repoUrl: "#",
     },
-  ]
+  ];
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -69,7 +80,8 @@ export default function Home() {
               <span className="text-primary">Developer</span>, Writer & Creator
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-              I build exceptional digital experiences and write about web development, design, and technology.
+              I build exceptional digital experiences and write about web
+              development, design, and technology.
             </p>
           </div>
           <div className="flex flex-wrap gap-4 justify-center">
@@ -83,7 +95,7 @@ export default function Home() {
             </Button>
           </div>
         </div>
-        
+
         {/* Background decoration */}
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background/50" />
@@ -128,7 +140,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative aspect-square rounded-lg overflow-hidden">
               <Image
-                src="https://images.pexels.com/photos/5990181/pexels-photo-5990181.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                src={img}
                 alt="Hasib - Developer portrait"
                 fill
                 className="object-cover"
@@ -143,11 +155,15 @@ export default function Home() {
                 Hello, I'm Hasib
               </h2>
               <p className="text-muted-foreground">
-                I'm a full-stack developer with over 5 years of experience building web applications and digital products.
-                I specialize in React, Next.js, and modern frontend technologies, with a strong background in UX/UI design.
+                I'm a full-stack developer with over 5 years of experience
+                building web applications and digital products. I specialize in
+                React, Next.js, and modern frontend technologies, with a strong
+                background in UX/UI design.
               </p>
               <p className="text-muted-foreground">
-                When I'm not coding, I enjoy writing about technology, contributing to open-source projects, and mentoring aspiring developers.
+                When I'm not coding, I enjoy writing about technology,
+                contributing to open-source projects, and mentoring aspiring
+                developers.
               </p>
               <Button asChild>
                 <Link href="/about">
@@ -163,14 +179,17 @@ export default function Home() {
       <section className="py-16 bg-muted/50">
         <div className="container">
           <div className="max-w-2xl mx-auto text-center space-y-6">
-            <h2 className="font-playfair text-3xl font-bold tracking-tight">Stay Updated</h2>
+            <h2 className="font-playfair text-3xl font-bold tracking-tight">
+              Stay Updated
+            </h2>
             <p className="text-muted-foreground">
-              Subscribe to my newsletter for the latest blog posts, project updates, and exclusive content.
+              Subscribe to my newsletter for the latest blog posts, project
+              updates, and exclusive content.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <Input 
-                type="email" 
-                placeholder="Enter your email" 
+              <Input
+                type="email"
+                placeholder="Enter your email"
                 className="h-12"
               />
               <Button className="h-12">Subscribe</Button>
@@ -182,7 +201,7 @@ export default function Home() {
         </div>
       </section>
     </div>
-  )
+  );
 }
 
 // Missing component in code above
@@ -192,5 +211,5 @@ function Input(props) {
       className={`flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${props.className}`}
       {...props}
     />
-  )
+  );
 }
