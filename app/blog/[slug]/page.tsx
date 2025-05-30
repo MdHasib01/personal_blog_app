@@ -29,8 +29,8 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = samplePosts.find((p) => p.id === params.slug);
 
   if (!post) {
-    <div>Post Not Found</div>;
     notFound();
+    return null;
   }
 
   return (
@@ -247,5 +247,27 @@ const samplePosts = [
     date: "2023-10-22",
     readTime: "7 min",
     category: "React",
+  },
+  {
+    id: "5",
+    title: "Introduction to Web Accessibility",
+    excerpt:
+      "Why web accessibility matters and how to make your websites more inclusive.",
+    coverImage:
+      "https://images.pexels.com/photos/7516363/pexels-photo-7516363.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    date: "2023-10-05",
+    readTime: "8 min",
+    category: "Accessibility",
+  },
+  {
+    id: "6",
+    title: "Creating a Blog with Next.js and Tailwind CSS",
+    excerpt:
+      "Learn how to build a fast, SEO-friendly blog using Next.js and Tailwind CSS.",
+    coverImage:
+      "https://images.pexels.com/photos/11035472/pexels-photo-11035472.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    date: "2023-09-24",
+    readTime: "10 min",
+    category: "Next.js",
   },
 ];
