@@ -5,135 +5,6 @@ import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, ExternalLink, Github, Calendar } from "lucide-react";
-const sampleProjects = [
-  {
-    id: "1",
-    title: "E-commerce Platform",
-    description:
-      "A full-featured e-commerce platform built with Next.js, Stripe, and a headless CMS.",
-    overview:
-      "This project was developed to create a modern e-commerce experience with fast performance, SEO optimization, and a seamless checkout process.",
-    image:
-      "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    tags: ["Next.js", "TypeScript", "Stripe", "Tailwind CSS"],
-    date: "December 2023",
-    technologies: [
-      "Next.js for frontend and API routes",
-      "TypeScript for type safety",
-      "Stripe for payment processing",
-      "Tailwind CSS for styling",
-      "Sanity.io as a headless CMS",
-      "Vercel for deployment",
-    ],
-    features: [
-      "Product catalog with filtering and search",
-      "User authentication and account management",
-      "Shopping cart and wishlist functionality",
-      "Secure checkout with Stripe",
-      "Order history and tracking",
-      "Admin dashboard for content management",
-    ],
-    challenges:
-      "One of the main challenges was implementing a performant filtering system that could handle multiple filter criteria without sacrificing user experience. I solved this by implementing server-side filtering with efficient database queries and client-side caching.",
-    results:
-      "The platform achieved a 40% faster loading time compared to the client's previous solution, resulting in a 25% increase in conversion rate and improved SEO rankings.",
-    demoUrl: "#",
-    repoUrl: "#",
-    galleryImages: [
-      "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      "https://images.pexels.com/photos/934070/pexels-photo-934070.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      "https://images.pexels.com/photos/6214476/pexels-photo-6214476.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      "https://images.pexels.com/photos/6770610/pexels-photo-6770610.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    ],
-  },
-  {
-    id: "2",
-    title: "Task Management App",
-    description:
-      "A collaborative task management application with real-time updates and team features.",
-    overview:
-      "This task management application was designed to help teams collaborate effectively with real-time updates, task assignment, and progress tracking.",
-    image:
-      "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    tags: ["React", "Firebase", "Material UI", "Redux"],
-    date: "October 2023",
-    technologies: [
-      "React for the user interface",
-      "Firebase for backend and real-time database",
-      "Material UI for component library",
-      "Redux for state management",
-      "Firebase Authentication for user management",
-      "Firebase Cloud Functions for backend logic",
-    ],
-    features: [
-      "Real-time task updates across all team members",
-      "Customizable project boards with drag-and-drop interface",
-      "Task assignment, due dates, and priority settings",
-      "Comment and attachment system for task discussions",
-      "Notification system for task changes and mentions",
-      "Dashboard with progress metrics and analytics",
-    ],
-    challenges:
-      "Implementing the real-time synchronization while maintaining optimal performance was challenging. I utilized Firebase's real-time database with careful data structuring and selective subscription patterns to minimize unnecessary updates.",
-    results:
-      "The application was adopted by several small teams and has received positive feedback for its intuitive interface and reliable real-time functionality. It helped one client reduce their project management overhead by 30%.",
-    demoUrl: "#",
-    repoUrl: "#",
-    galleryImages: [
-      "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      "https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      "https://images.pexels.com/photos/7172089/pexels-photo-7172089.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    ],
-  },
-  {
-    id: "3",
-    title: "Personal Finance Dashboard",
-    description:
-      "A dashboard for tracking personal finances with data visualization and budgeting tools.",
-    overview:
-      "This personal finance application helps users track their income, expenses, and investments with intuitive visualizations and budgeting features.",
-    image:
-      "https://images.pexels.com/photos/6801874/pexels-photo-6801874.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    tags: ["Vue.js", "D3.js", "Node.js", "MongoDB"],
-    date: "August 2023",
-    technologies: [
-      "Vue.js for frontend framework",
-      "D3.js for data visualization",
-      "Node.js for backend API",
-      "MongoDB for data storage",
-      "Express for API framework",
-      "Plaid API for bank integration",
-    ],
-    features: [
-      "Bank account integration via Plaid",
-      "Automatic transaction categorization",
-      "Interactive charts and graphs for expense analysis",
-      "Budget creation and tracking",
-      "Financial goal setting and progress tracking",
-      "Investment portfolio monitoring",
-      "Expense predictions based on historical data",
-    ],
-    challenges:
-      "The main challenge was ensuring data privacy and security while providing seamless bank integration. I implemented robust encryption, secure API design, and followed financial industry best practices for data handling.",
-    results:
-      "Users reported better financial awareness and improved saving habits after using the dashboard for a few months. The visualization features were particularly praised for making financial data more accessible and actionable.",
-    demoUrl: "#",
-    repoUrl: "#",
-    galleryImages: [
-      "https://images.pexels.com/photos/6801874/pexels-photo-6801874.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      "https://images.pexels.com/photos/7567441/pexels-photo-7567441.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      "https://images.pexels.com/photos/7567569/pexels-photo-7567569.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      "https://images.pexels.com/photos/6693655/pexels-photo-6693655.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    ],
-  },
-];
-
-export function generateStaticParams() {
-  return sampleProjects.map((project) => ({
-    slug: project.id,
-  }));
-}
 
 export async function generateMetadata({
   params,
@@ -329,3 +200,134 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
     </article>
   );
 }
+
+export function generateStaticParams() {
+  return sampleProjects.map((project) => ({
+    slug: project.id,
+  }));
+}
+
+// Sample projects data - in a real app, this would come from a database or CMS
+const sampleProjects = [
+  {
+    id: "1",
+    title: "E-commerce Platform",
+    description:
+      "A full-featured e-commerce platform built with Next.js, Stripe, and a headless CMS.",
+    overview:
+      "This project was developed to create a modern e-commerce experience with fast performance, SEO optimization, and a seamless checkout process.",
+    image:
+      "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    tags: ["Next.js", "TypeScript", "Stripe", "Tailwind CSS"],
+    date: "December 2023",
+    technologies: [
+      "Next.js for frontend and API routes",
+      "TypeScript for type safety",
+      "Stripe for payment processing",
+      "Tailwind CSS for styling",
+      "Sanity.io as a headless CMS",
+      "Vercel for deployment",
+    ],
+    features: [
+      "Product catalog with filtering and search",
+      "User authentication and account management",
+      "Shopping cart and wishlist functionality",
+      "Secure checkout with Stripe",
+      "Order history and tracking",
+      "Admin dashboard for content management",
+    ],
+    challenges:
+      "One of the main challenges was implementing a performant filtering system that could handle multiple filter criteria without sacrificing user experience. I solved this by implementing server-side filtering with efficient database queries and client-side caching.",
+    results:
+      "The platform achieved a 40% faster loading time compared to the client's previous solution, resulting in a 25% increase in conversion rate and improved SEO rankings.",
+    demoUrl: "#",
+    repoUrl: "#",
+    galleryImages: [
+      "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.pexels.com/photos/934070/pexels-photo-934070.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.pexels.com/photos/6214476/pexels-photo-6214476.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.pexels.com/photos/6770610/pexels-photo-6770610.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    ],
+  },
+  {
+    id: "2",
+    title: "Task Management App",
+    description:
+      "A collaborative task management application with real-time updates and team features.",
+    overview:
+      "This task management application was designed to help teams collaborate effectively with real-time updates, task assignment, and progress tracking.",
+    image:
+      "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    tags: ["React", "Firebase", "Material UI", "Redux"],
+    date: "October 2023",
+    technologies: [
+      "React for the user interface",
+      "Firebase for backend and real-time database",
+      "Material UI for component library",
+      "Redux for state management",
+      "Firebase Authentication for user management",
+      "Firebase Cloud Functions for backend logic",
+    ],
+    features: [
+      "Real-time task updates across all team members",
+      "Customizable project boards with drag-and-drop interface",
+      "Task assignment, due dates, and priority settings",
+      "Comment and attachment system for task discussions",
+      "Notification system for task changes and mentions",
+      "Dashboard with progress metrics and analytics",
+    ],
+    challenges:
+      "Implementing the real-time synchronization while maintaining optimal performance was challenging. I utilized Firebase's real-time database with careful data structuring and selective subscription patterns to minimize unnecessary updates.",
+    results:
+      "The application was adopted by several small teams and has received positive feedback for its intuitive interface and reliable real-time functionality. It helped one client reduce their project management overhead by 30%.",
+    demoUrl: "#",
+    repoUrl: "#",
+    galleryImages: [
+      "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.pexels.com/photos/7172089/pexels-photo-7172089.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    ],
+  },
+  {
+    id: "3",
+    title: "Personal Finance Dashboard",
+    description:
+      "A dashboard for tracking personal finances with data visualization and budgeting tools.",
+    overview:
+      "This personal finance application helps users track their income, expenses, and investments with intuitive visualizations and budgeting features.",
+    image:
+      "https://images.pexels.com/photos/6801874/pexels-photo-6801874.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    tags: ["Vue.js", "D3.js", "Node.js", "MongoDB"],
+    date: "August 2023",
+    technologies: [
+      "Vue.js for frontend framework",
+      "D3.js for data visualization",
+      "Node.js for backend API",
+      "MongoDB for data storage",
+      "Express for API framework",
+      "Plaid API for bank integration",
+    ],
+    features: [
+      "Bank account integration via Plaid",
+      "Automatic transaction categorization",
+      "Interactive charts and graphs for expense analysis",
+      "Budget creation and tracking",
+      "Financial goal setting and progress tracking",
+      "Investment portfolio monitoring",
+      "Expense predictions based on historical data",
+    ],
+    challenges:
+      "The main challenge was ensuring data privacy and security while providing seamless bank integration. I implemented robust encryption, secure API design, and followed financial industry best practices for data handling.",
+    results:
+      "Users reported better financial awareness and improved saving habits after using the dashboard for a few months. The visualization features were particularly praised for making financial data more accessible and actionable.",
+    demoUrl: "#",
+    repoUrl: "#",
+    galleryImages: [
+      "https://images.pexels.com/photos/6801874/pexels-photo-6801874.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.pexels.com/photos/7567441/pexels-photo-7567441.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.pexels.com/photos/7567569/pexels-photo-7567569.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.pexels.com/photos/6693655/pexels-photo-6693655.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    ],
+  },
+];

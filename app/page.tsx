@@ -152,16 +152,16 @@ export default function Home() {
                 <span className="ml-2 text-sm font-medium">About me</span>
               </div>
               <h2 className="font-playfair text-3xl md:text-4xl font-bold tracking-tight">
-                Hello, I&apos;m Hasib
+                Hello, I'm Hasib
               </h2>
               <p className="text-muted-foreground">
-                I&apos;m a full-stack developer with over 5 years of experience
+                I'm a full-stack developer with over 5 years of experience
                 building web applications and digital products. I specialize in
                 React, Next.js, and modern frontend technologies, with a strong
                 background in UX/UI design.
               </p>
               <p className="text-muted-foreground">
-                When I&apos;m not coding, I enjoy writing about technology,
+                When I'm not coding, I enjoy writing about technology,
                 contributing to open-source projects, and mentoring aspiring
                 developers.
               </p>
