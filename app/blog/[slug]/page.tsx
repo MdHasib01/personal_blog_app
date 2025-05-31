@@ -6,6 +6,83 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react";
 
+// Sample blog data - moved to top
+const samplePosts = [
+  {
+    id: "1",
+    title: "Building Responsive Websites with Tailwind CSS",
+    excerpt:
+      "Learn how to create beautiful, responsive websites using Tailwind CSS framework.",
+    coverImage:
+      "https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    date: "2023-12-10",
+    readTime: "5 min",
+    category: "Web Development",
+  },
+  {
+    id: "2",
+    title: "Next.js 13: The Future of React Applications",
+    excerpt:
+      "Explore the new features and improvements in Next.js 13 and how they change React development.",
+    coverImage:
+      "https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    date: "2023-11-28",
+    readTime: "6 min",
+    category: "Frontend",
+  },
+  {
+    id: "3",
+    title: "The Power of TypeScript in Modern Applications",
+    excerpt:
+      "Why TypeScript has become essential for building scalable and maintainable applications.",
+    coverImage:
+      "https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    date: "2023-11-15",
+    readTime: "4 min",
+    category: "JavaScript",
+  },
+  {
+    id: "4",
+    title: "Creating Custom Hooks in React",
+    excerpt:
+      "Learn how to create reusable custom hooks to share logic between components.",
+    coverImage:
+      "https://images.pexels.com/photos/11035471/pexels-photo-11035471.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    date: "2023-10-22",
+    readTime: "7 min",
+    category: "React",
+  },
+  {
+    id: "5",
+    title: "Introduction to Web Accessibility",
+    excerpt:
+      "Why web accessibility matters and how to make your websites more inclusive.",
+    coverImage:
+      "https://images.pexels.com/photos/7516363/pexels-photo-7516363.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    date: "2023-10-05",
+    readTime: "8 min",
+    category: "Accessibility",
+  },
+  {
+    id: "6",
+    title: "Creating a Blog with Next.js and Tailwind CSS",
+    excerpt:
+      "Learn how to build a fast, SEO-friendly blog using Next.js and Tailwind CSS.",
+    coverImage:
+      "https://images.pexels.com/photos/11035472/pexels-photo-11035472.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    date: "2023-09-24",
+    readTime: "10 min",
+    category: "Next.js",
+  },
+];
+
+// generateStaticParams moved here - before the component
+export function generateStaticParams() {
+  return samplePosts.map((post) => ({
+    slug: post.id,
+  }));
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -194,81 +271,6 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     </article>
   );
 }
-export function generateStaticParams() {
-  return samplePosts.map((post) => ({
-    slug: post.id,
-  }));
-}
 
-// // export const output = "static";
+// Uncomment these if needed for static generation
 // export const dynamic = "force-static";
-
-// Sample blog data - in a real app, this would come from a database or CMS
-const samplePosts = [
-  {
-    id: "1",
-    title: "Building Responsive Websites with Tailwind CSS",
-    excerpt:
-      "Learn how to create beautiful, responsive websites using Tailwind CSS framework.",
-    coverImage:
-      "https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    date: "2023-12-10",
-    readTime: "5 min",
-    category: "Web Development",
-  },
-  {
-    id: "2",
-    title: "Next.js 13: The Future of React Applications",
-    excerpt:
-      "Explore the new features and improvements in Next.js 13 and how they change React development.",
-    coverImage:
-      "https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    date: "2023-11-28",
-    readTime: "6 min",
-    category: "Frontend",
-  },
-  {
-    id: "3",
-    title: "The Power of TypeScript in Modern Applications",
-    excerpt:
-      "Why TypeScript has become essential for building scalable and maintainable applications.",
-    coverImage:
-      "https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    date: "2023-11-15",
-    readTime: "4 min",
-    category: "JavaScript",
-  },
-  {
-    id: "4",
-    title: "Creating Custom Hooks in React",
-    excerpt:
-      "Learn how to create reusable custom hooks to share logic between components.",
-    coverImage:
-      "https://images.pexels.com/photos/11035471/pexels-photo-11035471.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    date: "2023-10-22",
-    readTime: "7 min",
-    category: "React",
-  },
-  {
-    id: "5",
-    title: "Introduction to Web Accessibility",
-    excerpt:
-      "Why web accessibility matters and how to make your websites more inclusive.",
-    coverImage:
-      "https://images.pexels.com/photos/7516363/pexels-photo-7516363.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    date: "2023-10-05",
-    readTime: "8 min",
-    category: "Accessibility",
-  },
-  {
-    id: "6",
-    title: "Creating a Blog with Next.js and Tailwind CSS",
-    excerpt:
-      "Learn how to build a fast, SEO-friendly blog using Next.js and Tailwind CSS.",
-    coverImage:
-      "https://images.pexels.com/photos/11035472/pexels-photo-11035472.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    date: "2023-09-24",
-    readTime: "10 min",
-    category: "Next.js",
-  },
-];
