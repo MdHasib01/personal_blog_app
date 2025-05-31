@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Download, Mail } from "lucide-react";
 import Link from "next/link";
 
-import img from "../assets/avata.png";
+import img from "../assets/avatar.jpg";
 
 export const metadata: Metadata = {
   title: "About Me | Personal Blog & Portfolio",
@@ -72,7 +72,7 @@ export default function AboutPage() {
         <div className="relative aspect-square rounded-lg overflow-hidden">
           <Image
             src={img}
-            alt="Hasib - Developer portrait"
+            alt="Chris Gray - Developer portrait"
             fill
             className="object-cover"
             priority
@@ -83,7 +83,7 @@ export default function AboutPage() {
             About Me
           </h1>
           <p className="text-lg text-muted-foreground">
-            I'm Hasib, a full-stack developer passionate about creating
+            I'm Chris Gray, a full-stack developer passionate about creating
             exceptional digital experiences. With over 5 years of experience, I
             specialize in building modern web applications that are both
             functional and beautiful.

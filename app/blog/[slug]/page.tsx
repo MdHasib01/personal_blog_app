@@ -154,7 +154,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                 <span className="font-bold text-sm">H</span>
               </div>
               <div>
-                <p className="font-medium">Hasib</p>
+                <p className="font-medium">Chris Gray</p>
                 <p className="text-sm text-muted-foreground">Web Developer</p>
               </div>
             </div>

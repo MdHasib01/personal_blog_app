@@ -5,7 +5,7 @@ import { ArrowRight, FileCode, Newspaper, User } from "lucide-react";
 import { BlogCard } from "@/components/blog-card";
 import { ProjectCard } from "@/components/project-card";
 import { FeaturedSection } from "@/components/featured-section";
-import img from "./assets/avata.png";
+import img from "./assets/avatar.jpg";
 
 export default function Home() {
   // Sample data for the blog and portfolio
@@ -141,7 +141,7 @@ export default function Home() {
             <div className="relative aspect-square rounded-lg overflow-hidden">
               <Image
                 src={img}
-                alt="Hasib - Developer portrait"
+                alt="Chris Gray -  portrait"
                 fill
                 className="object-cover"
               />
@@ -152,7 +152,7 @@ export default function Home() {
                 <span className="ml-2 text-sm font-medium">About me</span>
               </div>
               <h2 className="font-playfair text-3xl md:text-4xl font-bold tracking-tight">
-                Hello, I'm Hasib
+                Hello, I'm Chris Gray
               </h2>
               <p className="text-muted-foreground">
                 I'm a full-stack developer with over 5 years of experience
