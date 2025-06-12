@@ -6,44 +6,35 @@ import { BlogCard } from "@/components/blog-card";
 import { ProjectCard } from "@/components/project-card";
 import { FeaturedSection } from "@/components/featured-section";
 import img from "./assets/avatar.jpg";
+interface Post {
+  _id: string;
+  title: string;
+  cloudinaryImageUrl: string;
+  publishedAt: string;
+  category: string;
+}
+async function getPosts(): Promise<Post[]> {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/posts`,
+      {
+        next: { revalidate: 3600 },
+      }
+    );
 
-export default function Home() {
-  // Sample data for the blog and portfolio
-  const featuredPosts = [
-    {
-      id: "1",
-      title: "Building Responsive Websites with Tailwind CSS",
-      excerpt:
-        "Learn how to create beautiful, responsive websites using Tailwind CSS framework.",
-      coverImage:
-        "https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      date: "2023-12-10",
-      readTime: "5 min",
-      category: "Web Development",
-    },
-    {
-      id: "2",
-      title: "Next.js 13: The Future of React Applications",
-      excerpt:
-        "Explore the new features and improvements in Next.js 13 and how they change React development.",
-      coverImage:
-        "https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      date: "2023-11-28",
-      readTime: "6 min",
-      category: "Frontend",
-    },
-    {
-      id: "3",
-      title: "The Power of TypeScript in Modern Applications",
-      excerpt:
-        "Why TypeScript has become essential for building scalable and maintainable applications.",
-      coverImage:
-        "https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      date: "2023-11-15",
-      readTime: "4 min",
-      category: "JavaScript",
-    },
-  ];
+    if (!response.ok) {
+      throw new Error(`Failed to fetch posts: ${response.status}`);
+    }
+
+    const posts = await response.json();
+    return posts;
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+    return [];
+  }
+}
+export default async function Home() {
+  const featuredPosts = await getPosts();
 
   const featuredProjects = [
     {
@@ -113,8 +104,8 @@ export default function Home() {
         icon={<Newspaper className="h-5 w-5" />}
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {featuredPosts.map((post) => (
-            <BlogCard key={post.id} post={post} />
+          {featuredPosts.slice(0, 6).map((post) => (
+            <BlogCard key={post._id} post={post} />
           ))}
         </div>
       </FeaturedSection>
@@ -152,16 +143,16 @@ export default function Home() {
                 <span className="ml-2 text-sm font-medium">About me</span>
               </div>
               <h2 className="font-playfair text-3xl md:text-4xl font-bold tracking-tight">
-                Hello, I'm Chris Gray
+                Hello, I&apos;m Chris Gray
               </h2>
               <p className="text-muted-foreground">
-                I'm a full-stack developer with over 5 years of experience
+                I&apos;m a full-stack developer with over 5 years of experience
                 building web applications and digital products. I specialize in
                 React, Next.js, and modern frontend technologies, with a strong
                 background in UX/UI design.
               </p>
               <p className="text-muted-foreground">
-                When I'm not coding, I enjoy writing about technology,
+                When I&apos;m not coding, I enjoy writing about technology,
                 contributing to open-source projects, and mentoring aspiring
                 developers.
               </p>
