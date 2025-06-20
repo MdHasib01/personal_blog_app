@@ -24,6 +24,8 @@ async function getPost(id: string): Promise<Post | null> {
       `${process.env.NEXT_PUBLIC_API_URL}/api/posts/${id}`,
       {
         next: { revalidate: 3600 },
+        
+        cache: "force-cache",
       }
     );
 
@@ -45,6 +47,8 @@ async function getAllPosts(): Promise<Post[]> {
       `${process.env.NEXT_PUBLIC_API_URL}/api/posts`,
       {
         next: { revalidate: 3600 },
+       
+        cache: "force-cache",
       }
     );
 
@@ -60,16 +64,27 @@ async function getAllPosts(): Promise<Post[]> {
   }
 }
 
-// Required for static export
+
 export async function generateStaticParams() {
   try {
     const posts = await getAllPosts();
 
-    return posts.map((post) => ({
-      slug: post._id,
+    
+    console.log("Posts found for static generation:", posts.length);
+    posts.forEach((post) => {
+      console.log("Post ID:", post._id, "Title:", post.title);
+    });
+
+   
+    const params = posts.map((post) => ({
+      slug: post._id, 
     }));
+
+    console.log("Generated params:", params);
+    return params;
   } catch (error) {
     console.error("Error generating static params:", error);
+
     return [];
   }
 }
@@ -84,6 +99,7 @@ export async function generateMetadata({
   if (!post) {
     return {
       title: "Post Not Found",
+      description: "The requested blog post could not be found.",
     };
   }
 
@@ -103,9 +119,13 @@ export default async function BlogPostPage({
 }: {
   params: { slug: string };
 }) {
+  
+  console.log("Requested slug:", params.slug);
+
   const post = await getPost(params.slug);
 
   if (!post) {
+    console.log("Post not found for slug:", params.slug);
     notFound();
   }
 
@@ -146,14 +166,13 @@ export default async function BlogPostPage({
           <div className="flex items-center justify-between mb-10">
             <div className="flex items-center">
               <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center mr-3">
-                <span className="font-bold text-sm">
-                  <Image
-                    src={avatar}
-                    alt="Chris Gray"
-                    width={5}
-                    className="rounded-full h-10 w-10 object-cover"
-                  ></Image>
-                </span>
+                <Image
+                  src={avatar}
+                  alt="Chris Gray"
+                  width={40}
+                  height={40}
+                  className="rounded-full h-10 w-10 object-cover"
+                />
               </div>
               <div>
                 <p className="font-medium">Chris Gray</p>
