@@ -181,7 +181,7 @@ export default async function Home() {
               <Input
                 type="email"
                 placeholder="Enter your email"
-                className="h-12"
+                className="h-12 px-2 rounded-md"
               />
               <Button className="h-12">Subscribe</Button>
             </div>
