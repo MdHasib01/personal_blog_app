@@ -59,7 +59,7 @@ export default function VideosPage() {
       const response = await fetch(
         `${
           process.env.NEXT_PUBLIC_API_URL
-        }/api/youtube/videos?page=${page}&limit=50&search=${encodeURIComponent(
+        }/api/youtube/videos?page=${page}&limit=6&search=${encodeURIComponent(
           search
         )}`
       );
