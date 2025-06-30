@@ -304,7 +304,7 @@ export default async function Home() {
               Subscribe to my newsletter for the latest blog posts, project
               updates, and exclusive content.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <div className="flex flex-col justify-center sm:flex-row gap-3 max-w-md mx-auto">
               <Input
                 type="email"
                 placeholder="Enter your email"
