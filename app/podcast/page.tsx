@@ -57,7 +57,9 @@ export default function VideosPage() {
     setLoading(true);
     try {
       const response = await fetch(
-        `${"http://localhost:3000"}/api/youtube/videos?page=${page}&limit=50&search=${encodeURIComponent(
+        `${
+          process.env.NEXT_PUBLIC_API_URL
+        }/api/youtube/videos?page=${page}&limit=50&search=${encodeURIComponent(
           search
         )}`
       );

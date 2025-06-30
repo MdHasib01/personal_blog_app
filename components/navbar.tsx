@@ -18,8 +18,8 @@ const routes = [
     label: "Blog",
   },
   {
-    href: "/portfolio",
-    label: "Portfolio",
+    href: "/podcasts",
+    label: "Podcasts",
   },
   {
     href: "/about",
