@@ -1,11 +1,24 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, FileCode, Newspaper, User } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import {
+  ArrowRight,
+  FileCode,
+  Newspaper,
+  Mail,
+  ExternalLink,
+} from "lucide-react";
 import { BlogCard } from "@/components/blog-card";
 import { ProjectCard } from "@/components/project-card";
 import { FeaturedSection } from "@/components/featured-section";
 import img from "./assets/avatar.jpg";
+
 interface Post {
   _id: string;
   title: string;
@@ -13,6 +26,7 @@ interface Post {
   publishedAt: string;
   category: string;
 }
+
 async function getPosts(): Promise<Post[]> {
   try {
     const response = await fetch(
@@ -33,6 +47,7 @@ async function getPosts(): Promise<Post[]> {
     return [];
   }
 }
+
 export default async function Home() {
   const featuredPosts = await getPosts();
 
@@ -65,25 +80,57 @@ export default async function Home() {
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
       <section className="relative py-20 md:py-28 overflow-hidden">
-        <div className="container flex flex-col items-center text-center space-y-8 relative z-10">
-          <div className="space-y-4 max-w-3xl mx-auto">
-            <h1 className="font-playfair text-4xl md:text-6xl font-bold tracking-tight">
-              <span className="text-primary">Developer</span>, Writer & Creator
-            </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-              I build exceptional digital experiences and write about web
-              development, design, and technology.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Button asChild size="lg">
-              <Link href="/portfolio">
-                View My Work <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-            <Button variant="outline" size="lg" asChild>
-              <Link href="/blog">Read My Blog</Link>
-            </Button>
+        <div className="container">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Content */}
+            <div className="space-y-8 text-center lg:text-left">
+              <div className="space-y-4">
+                <h1 className="font-playfair text-4xl md:text-6xl font-bold tracking-tight">
+                  <span className="text-primary">Husband</span>, Father &
+                  <span className="block">Entrepreneur</span>
+                </h1>
+              </div>
+              <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+                <Button asChild size="lg">
+                  <Link href="/contact">
+                    Contact Me <Mail className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button variant="outline" size="lg" asChild>
+                  <Link
+                    href="https://linktr.ee/yochrisgray"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Social Links <ExternalLink className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+
+            {/* Image */}
+            <div className="relative flex justify-center lg:justify-end">
+              <div className="relative">
+                {/* Decorative elements */}
+                <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-primary/10 rounded-2xl blur-xl"></div>
+                <div className="absolute -inset-2 bg-gradient-to-r from-primary/30 to-transparent rounded-xl blur-lg"></div>
+
+                {/* Main image container */}
+                <div className="relative aspect-square w-80 md:w-96 rounded-xl overflow-hidden border-4 border-background shadow-2xl">
+                  <Image
+                    src={img}
+                    alt="Chris Gray - Portrait"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+
+                {/* Floating accent elements */}
+                <div className="absolute -top-4 -right-4 w-8 h-8 bg-primary/20 rounded-full blur-sm"></div>
+                <div className="absolute -bottom-6 -left-6 w-12 h-12 bg-primary/15 rounded-full blur-md"></div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -125,43 +172,123 @@ export default async function Home() {
         </div>
       </FeaturedSection>
 
-      {/* About Section */}
+      {/* FAQ Section */}
       <section className="py-16 md:py-24">
         <div className="container">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="relative aspect-square rounded-lg overflow-hidden">
-              <Image
-                src={img}
-                alt="Chris Gray -  portrait"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="space-y-6">
-              <div className="inline-flex items-center rounded-full border border-border/40 px-4 py-1.5">
-                <span className="flex h-2 w-2 rounded-full bg-primary"></span>
-                <span className="ml-2 text-sm font-medium">About me</span>
-              </div>
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center space-y-4 mb-12">
               <h2 className="font-playfair text-3xl md:text-4xl font-bold tracking-tight">
-                Hello, I&apos;m Chris Gray
+                Frequently Asked Questions
               </h2>
-              <p className="text-muted-foreground">
-                I&apos;m a full-stack developer with over 5 years of experience
-                building web applications and digital products. I specialize in
-                React, Next.js, and modern frontend technologies, with a strong
-                background in UX/UI design.
+              <p className="text-muted-foreground text-lg">
+                Everything you need to know about working with Chris Gray
               </p>
-              <p className="text-muted-foreground">
-                When I&apos;m not coding, I enjoy writing about technology,
-                contributing to open-source projects, and mentoring aspiring
-                developers.
-              </p>
-              <Button asChild>
-                <Link href="/about">
-                  More about me <User className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
             </div>
+
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value="item-1">
+                <AccordionTrigger className="text-left font-semibold">
+                  Who is Chris Gray?
+                </AccordionTrigger>
+                <AccordionContent>
+                  Chris Gray is a creative professional and digital strategist
+                  with a focus on innovative design, branding, and web
+                  development.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-2">
+                <AccordionTrigger className="text-left font-semibold">
+                  What does Chris Gray do?
+                </AccordionTrigger>
+                <AccordionContent>
+                  Chris provides design consulting, web development, brand
+                  strategy, and content creation services for individuals and
+                  businesses.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-3">
+                <AccordionTrigger className="text-left font-semibold">
+                  How can I contact Chris Gray?
+                </AccordionTrigger>
+                <AccordionContent>
+                  You can reach Chris Gray via the{" "}
+                  <Link
+                    href="/contact"
+                    className="text-primary hover:underline"
+                  >
+                    contact form
+                  </Link>{" "}
+                  on the website or email at{" "}
+                  <a
+                    href="mailto:your-email@example.com"
+                    className="text-primary hover:underline"
+                  >
+                    your-email@example.com
+                  </a>
+                  .
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-4">
+                <AccordionTrigger className="text-left font-semibold">
+                  Does Chris Gray offer mentoring or coaching?
+                </AccordionTrigger>
+                <AccordionContent>
+                  Yes, Chris offers one-on-one mentoring and creative coaching
+                  for designers, developers, and entrepreneurs.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-5">
+                <AccordionTrigger className="text-left font-semibold">
+                  Where has Chris Gray been featured?
+                </AccordionTrigger>
+                <AccordionContent>
+                  Chris has been featured in leading design blogs, tech
+                  podcasts, and industry panels. Visit the{" "}
+                  <Link
+                    href="/featured"
+                    className="text-primary hover:underline"
+                  >
+                    "Featured In"
+                  </Link>{" "}
+                  section for more.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-6">
+                <AccordionTrigger className="text-left font-semibold">
+                  Is there a podcast or blog by Chris Gray?
+                </AccordionTrigger>
+                <AccordionContent>
+                  Yes, Chris shares insights through a{" "}
+                  <Link href="/blog" className="text-primary hover:underline">
+                    personal blog
+                  </Link>{" "}
+                  and hosts a podcast on design, tech, and creative
+                  entrepreneurship.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-7">
+                <AccordionTrigger className="text-left font-semibold">
+                  How do I get started working with Chris Gray?
+                </AccordionTrigger>
+                <AccordionContent>
+                  Simply visit the{" "}
+                  <Link
+                    href="/work-with-me"
+                    className="text-primary hover:underline"
+                  >
+                    "Work With Me"
+                  </Link>{" "}
+                  page, fill out the project form, and Chris will get back to
+                  you with next steps.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
         </div>
       </section>

@@ -68,7 +68,7 @@ const CategoriesSection: React.FC<CategoriesSectionProps> = ({
           <Button
             variant="outline"
             size="sm"
-            className="absolute left-0 z-10 h-8 w-8 p-0 bg-green-400 dark:bg-green-900 shadow-md"
+            className="absolute left-0 z-10 h-8 w-8 p-0 bg-primary shadow-md"
             onClick={scrollLeft}
           >
             <ChevronLeft className="h-4 w-4" />
@@ -110,7 +110,7 @@ const CategoriesSection: React.FC<CategoriesSectionProps> = ({
           <Button
             variant="outline"
             size="sm"
-            className="absolute right-0 z-10 h-8 w-8 p-0 bg-green-400 dark:bg-green-900 shadow-md"
+            className="absolute right-0 z-10 h-8 w-8 p-0 bg-primary shadow-md"
             onClick={scrollRight}
           >
             <ChevronRight className="h-4 w-4" />
