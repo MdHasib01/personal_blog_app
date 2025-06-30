@@ -50,7 +50,7 @@ export default function VideosPage() {
     limit: 50,
   });
   const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState("how");
+  const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
   const fetchVideos = async (page: number = 1, search: string) => {
