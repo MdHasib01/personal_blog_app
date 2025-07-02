@@ -13,6 +13,7 @@ import { VideoCard } from "@/components/video-card";
 import { FeaturedSection } from "@/components/featured-section";
 import img from "./assets/avatar.jpg";
 import { SubscribePopup } from "@/components/subscribe-popup";
+import FaqSection from "@/components/faq-section";
 
 interface Post {
   _id: string;
@@ -181,121 +182,7 @@ export default async function Home() {
       {/* FAQ Section */}
       <section className="py-16 md:py-24">
         <div className="container">
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center space-y-4 mb-12">
-              <h2 className="font-playfair text-3xl md:text-4xl font-bold tracking-tight">
-                Frequently Asked Questions
-              </h2>
-              <p className="text-muted-foreground text-lg">
-                Everything you need to know about working with Chris Gray
-              </p>
-            </div>
-
-            <Accordion type="single" collapsible className="w-full">
-              <AccordionItem value="item-1">
-                <AccordionTrigger className="text-left font-semibold">
-                  Who is Chris Gray?
-                </AccordionTrigger>
-                <AccordionContent>
-                  Chris Gray is a creative professional and digital strategist
-                  with a focus on innovative design, branding, and web
-                  development.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-2">
-                <AccordionTrigger className="text-left font-semibold">
-                  What does Chris Gray do?
-                </AccordionTrigger>
-                <AccordionContent>
-                  Chris provides design consulting, web development, brand
-                  strategy, and content creation services for individuals and
-                  businesses.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-3">
-                <AccordionTrigger className="text-left font-semibold">
-                  How can I contact Chris Gray?
-                </AccordionTrigger>
-                <AccordionContent>
-                  You can reach Chris Gray via the{" "}
-                  <Link
-                    href="/contact"
-                    className="text-primary hover:underline"
-                  >
-                    contact form
-                  </Link>{" "}
-                  on the website or email at{" "}
-                  <a
-                    href="mailto:your-email@example.com"
-                    className="text-primary hover:underline"
-                  >
-                    your-email@example.com
-                  </a>
-                  .
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-4">
-                <AccordionTrigger className="text-left font-semibold">
-                  Does Chris Gray offer mentoring or coaching?
-                </AccordionTrigger>
-                <AccordionContent>
-                  Yes, Chris offers one-on-one mentoring and creative coaching
-                  for designers, developers, and entrepreneurs.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-5">
-                <AccordionTrigger className="text-left font-semibold">
-                  Where has Chris Gray been featured?
-                </AccordionTrigger>
-                <AccordionContent>
-                  Chris has been featured in leading design blogs, tech
-                  podcasts, and industry panels. Visit the{" "}
-                  <Link
-                    href="/featured"
-                    className="text-primary hover:underline"
-                  >
-                    Featured In
-                  </Link>{" "}
-                  section for more.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-6">
-                <AccordionTrigger className="text-left font-semibold">
-                  Is there a podcast or blog by Chris Gray?
-                </AccordionTrigger>
-                <AccordionContent>
-                  Yes, Chris shares insights through a{" "}
-                  <Link href="/blog" className="text-primary hover:underline">
-                    personal blog
-                  </Link>{" "}
-                  and hosts a podcast on design, tech, and creative
-                  entrepreneurship.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-7">
-                <AccordionTrigger className="text-left font-semibold">
-                  How do I get started working with Chris Gray?
-                </AccordionTrigger>
-                <AccordionContent>
-                  Simply visit the{" "}
-                  <Link
-                    href="/work-with-me"
-                    className="text-primary hover:underline"
-                  >
-                    Work With Me
-                  </Link>{" "}
-                  page, fill out the project form, and Chris will get back to
-                  you with next steps.
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </div>
+          <FaqSection />
         </div>
       </section>
 
