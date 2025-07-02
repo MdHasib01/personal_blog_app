@@ -12,6 +12,7 @@ import { BlogCard } from "@/components/blog-card";
 import { VideoCard } from "@/components/video-card";
 import { FeaturedSection } from "@/components/featured-section";
 import img from "./assets/avatar.jpg";
+import { SubscribePopup } from "@/components/subscribe-popup";
 
 interface Post {
   _id: string;
@@ -323,6 +324,7 @@ export default async function Home() {
           </div>
         </div>
       </section>
+      <SubscribePopup />
     </div>
   );
 }
