@@ -7,15 +7,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import {
-  ArrowRight,
-  FileCode,
-  Newspaper,
-  Mail,
-  ExternalLink,
-} from "lucide-react";
+import { ArrowRight, Video, Newspaper, Mail, ExternalLink } from "lucide-react";
 import { BlogCard } from "@/components/blog-card";
-import { ProjectCard } from "@/components/project-card";
+import { VideoCard } from "@/components/video-card";
 import { FeaturedSection } from "@/components/featured-section";
 import img from "./assets/avatar.jpg";
 
@@ -25,6 +19,20 @@ interface Post {
   cloudinaryImageUrl: string;
   publishedAt: string;
   category: string;
+}
+
+interface Video {
+  _id: string;
+  videoId: string;
+  channelId: string;
+  channelName: string;
+  description: string;
+  duration: string;
+  publishedAt: string;
+  scrapedAt: string;
+  thumbnail: string;
+  title: string;
+  url: string;
 }
 
 async function getPosts(): Promise<Post[]> {
@@ -48,33 +56,30 @@ async function getPosts(): Promise<Post[]> {
   }
 }
 
+async function getVideos(): Promise<Video[]> {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/youtube/videos?limit=6`,
+      {
+        next: { revalidate: 3600 },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch videos: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data.videos || [];
+  } catch (error) {
+    console.error("Error fetching videos:", error);
+    return [];
+  }
+}
+
 export default async function Home() {
   const featuredPosts = await getPosts();
-
-  const featuredProjects = [
-    {
-      id: "1",
-      title: "E-commerce Platform",
-      description:
-        "A full-featured e-commerce platform built with Next.js, Stripe, and a headless CMS.",
-      image:
-        "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      tags: ["Next.js", "TypeScript", "Stripe", "Tailwind CSS"],
-      demoUrl: "#",
-      repoUrl: "#",
-    },
-    {
-      id: "2",
-      title: "Task Management App",
-      description:
-        "A collaborative task management application with real-time updates and team features.",
-      image:
-        "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      tags: ["React", "Firebase", "Material UI", "Redux"],
-      demoUrl: "#",
-      repoUrl: "#",
-    },
-  ];
+  const featuredVideos = await getVideos();
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -158,16 +163,16 @@ export default async function Home() {
       </FeaturedSection>
 
       <FeaturedSection
-        title="Featured Projects"
-        description="A selection of my recent work and personal projects."
-        viewAllText="Explore all projects"
-        viewAllLink="/portfolio"
-        icon={<FileCode className="h-5 w-5" />}
+        title="Featured Podcasts"
+        description="Latest podcast episodes and video content on entrepreneurship, tech, and life insights."
+        viewAllText="View all podcasts"
+        viewAllLink="/podcasts"
+        icon={<Video className="h-5 w-5" />}
         variant="secondary"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {featuredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {featuredVideos.slice(0, 6).map((video) => (
+            <VideoCard key={video._id} video={video} />
           ))}
         </div>
       </FeaturedSection>
@@ -252,7 +257,7 @@ export default async function Home() {
                     href="/featured"
                     className="text-primary hover:underline"
                   >
-                    "Featured In"
+                    Featured In
                   </Link>{" "}
                   section for more.
                 </AccordionContent>
@@ -282,7 +287,7 @@ export default async function Home() {
                     href="/work-with-me"
                     className="text-primary hover:underline"
                   >
-                    "Work With Me"
+                    Work With Me
                   </Link>{" "}
                   page, fill out the project form, and Chris will get back to
                   you with next steps.
@@ -304,7 +309,7 @@ export default async function Home() {
               Subscribe to my newsletter for the latest blog posts, project
               updates, and exclusive content.
             </p>
-            <div className="flex flex-col justify-center sm:flex-row gap-3 max-w-md mx-auto">
+            <div className="flex flex-col sm:flex-row justify-center  gap-3 max-w-md mx-auto">
               <Input
                 type="email"
                 placeholder="Enter your email"
