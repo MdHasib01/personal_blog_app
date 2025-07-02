@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
-
+import { Toaster } from "@/components/ui/sonner";
 export const metadata: Metadata = {
   title: "Personal Blog & Portfolio",
   description:
@@ -28,6 +28,7 @@ export default function RootLayout({
             <Navbar />
             <main className="flex-1">{children}</main>
             <Footer />
+            <Toaster />
           </div>
         </ThemeProvider>
       </body>

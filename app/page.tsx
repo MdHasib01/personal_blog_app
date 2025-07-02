@@ -1,13 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { ArrowRight, Video, Newspaper, Mail, ExternalLink } from "lucide-react";
+import { Video, Newspaper, Mail, ExternalLink } from "lucide-react";
 import { BlogCard } from "@/components/blog-card";
 import { VideoCard } from "@/components/video-card";
 import { FeaturedSection } from "@/components/featured-section";
