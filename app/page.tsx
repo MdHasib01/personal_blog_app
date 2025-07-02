@@ -8,6 +8,7 @@ import { FeaturedSection } from "@/components/featured-section";
 import img from "./assets/avatar.jpg";
 import { SubscribePopup } from "@/components/subscribe-popup";
 import FaqSection from "@/components/faq-section";
+import Newsletter from "@/components/newsletter";
 
 interface Post {
   _id: string;
@@ -182,28 +183,7 @@ export default async function Home() {
 
       {/* Newsletter Section */}
       <section className="py-16 bg-muted/50">
-        <div className="container">
-          <div className="max-w-2xl mx-auto text-center space-y-6">
-            <h2 className="font-playfair text-3xl font-bold tracking-tight">
-              Stay Updated
-            </h2>
-            <p className="text-muted-foreground">
-              Subscribe to my newsletter for the latest blog posts, project
-              updates, and exclusive content.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center  gap-3 max-w-md mx-auto">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                className="h-12 px-2 rounded-md"
-              />
-              <Button className="h-12">Subscribe</Button>
-            </div>
-            <p className="text-xs text-muted-foreground">
-              I respect your privacy. Unsubscribe at any time.
-            </p>
-          </div>
-        </div>
+        <Newsletter />
       </section>
       <SubscribePopup />
     </div>
