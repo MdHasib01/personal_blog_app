@@ -82,20 +82,20 @@ export default function AboutPage() {
   ];
 
   // Discussion topics/expertise areas
-  const expertiseAreas = [
-    { name: "Entrepreneurship", icon: "🚀" },
-    { name: "Business Strategy", icon: "💼" },
-    { name: "Digital Marketing", icon: "📱" },
-    { name: "Social Media Marketing", icon: "📊" },
-    { name: "Email Marketing", icon: "📧" },
-    { name: "Paid Advertising", icon: "💰" },
-    { name: "AI in Business", icon: "🤖" },
-    { name: "Lead Generation", icon: "🎯" },
-    { name: "Community Building", icon: "👥" },
-    { name: "Newsletter Strategy", icon: "📰" },
-    { name: "Brazilian Jiu-Jitsu", icon: "🥋" },
-    { name: "Family Balance", icon: "👨‍👩‍👧‍👦" },
-  ];
+  // const expertiseAreas = [
+  //   { name: "Entrepreneurship", icon: "🚀" },
+  //   { name: "Business Strategy", icon: "💼" },
+  //   { name: "Digital Marketing", icon: "📱" },
+  //   { name: "Social Media Marketing", icon: "📊" },
+  //   { name: "Email Marketing", icon: "📧" },
+  //   { name: "Paid Advertising", icon: "💰" },
+  //   { name: "AI in Business", icon: "🤖" },
+  //   { name: "Lead Generation", icon: "🎯" },
+  //   { name: "Community Building", icon: "👥" },
+  //   { name: "Newsletter Strategy", icon: "📰" },
+  //   { name: "Brazilian Jiu-Jitsu", icon: "🥋" },
+  //   { name: "Family Balance", icon: "👨‍👩‍👧‍👦" },
+  // ];
 
   // Key stats about Chris's impact
   const stats = [
@@ -283,7 +283,6 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
-
       {/* Stats Section */}
       {/* <section className="mb-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -305,7 +304,6 @@ export default function AboutPage() {
           ))}
         </div>
       </section> */}
-
       {/* Business Ventures Section */}
       <section className="mb-16">
         <h2 className="font-playfair text-3xl font-bold mb-8 text-center">
@@ -340,9 +338,8 @@ export default function AboutPage() {
           ))}
         </div>
       </section>
-
       {/* Expertise Areas Section */}
-      <section className="mb-16">
+      {/* <section className="mb-16">
         <h2 className="font-playfair text-3xl font-bold mb-8 text-center">
           Discussion Topics & Expertise
         </h2>
@@ -359,8 +356,7 @@ export default function AboutPage() {
             </Card>
           ))}
         </div>
-      </section>
-
+      </section> */}
       {/* What Chris Offers Section */}
       <section className="mb-16">
         <h2 className="font-playfair text-3xl font-bold mb-8 text-center">
@@ -385,7 +381,6 @@ export default function AboutPage() {
           ))}
         </div>
       </section>
-
       {/* Personal Side Section */}
       <section className="mb-16">
         <h2 className="font-playfair text-3xl font-bold mb-8 text-center">
@@ -442,7 +437,6 @@ export default function AboutPage() {
           </Card>
         </div>
       </section>
-
       {/* Call to Action */}
       <section className="mt-16 text-center">
         <Card className="bg-gradient-to-r from-primary/5 to-primary/10 border-primary/20">

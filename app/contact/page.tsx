@@ -282,47 +282,6 @@ export default function ContactPage() {
               </Button>
             </div>
           </div>
-
-          <div>
-            <h2 className="font-playfair text-2xl font-bold mb-6">
-              Available For
-            </h2>
-            <ul className="space-y-3">
-              <li className="flex items-center">
-                <span className="h-1.5 w-1.5 rounded-full bg-primary mr-2"></span>
-                Podcast Interviews
-              </li>
-              <li className="flex items-center">
-                <span className="h-1.5 w-1.5 rounded-full bg-primary mr-2"></span>
-                Speaking Engagements
-              </li>
-              <li className="flex items-center">
-                <span className="h-1.5 w-1.5 rounded-full bg-primary mr-2"></span>
-                Marketing Consultations
-              </li>
-              <li className="flex items-center">
-                <span className="h-1.5 w-1.5 rounded-full bg-primary mr-2"></span>
-                Community Collaborations
-              </li>
-              <li className="flex items-center">
-                <span className="h-1.5 w-1.5 rounded-full bg-primary mr-2"></span>
-                Content Creation Partnerships
-              </li>
-            </ul>
-          </div>
-
-          <div className="bg-gradient-to-r from-primary/5 to-primary/10 p-6 rounded-lg border border-primary/20">
-            <h3 className="font-semibold mb-3 flex items-center gap-2">
-              <MessageCircle className="h-5 w-5" />
-              What to Expect
-            </h3>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>• Authentic, tactical conversations</li>
-              <li>• Actionable tips your audience can implement today</li>
-              <li>• Cross-promotion to 4,000+ entrepreneurs</li>
-              <li>• Content shared across all social platforms</li>
-            </ul>
-          </div>
         </div>
       </div>
     </div>
