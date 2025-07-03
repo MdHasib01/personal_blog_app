@@ -104,70 +104,72 @@ export default async function Home() {
                 </h1>
               </div>
               {/* Social Links */}
-              <div className="flex items-center gap-3 pt-2 flex-wrap">
-                <Button size="sm" variant="outline" asChild>
-                  <a
-                    href="https://www.tiktok.com/@yochrisgray"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="TikTok"
-                  >
-                    <FaTiktok className="h-4 w-4" />
-                  </a>
-                </Button>
+              <div className="flex justify-center lg:justify-start">
+                <div className="flex items-center gap-3 pt-2 flex-wrap">
+                  <Button size="sm" variant="outline" asChild>
+                    <a
+                      href="https://www.tiktok.com/@yochrisgray"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="TikTok"
+                    >
+                      <FaTiktok className="h-4 w-4" />
+                    </a>
+                  </Button>
 
-                <Button size="sm" variant="outline" asChild>
-                  <a
-                    href="https://www.youtube.com/@yochrisgray"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="YouTube"
-                  >
-                    <Youtube className="h-4 w-4" />
-                  </a>
-                </Button>
-                <Button size="sm" variant="outline" asChild>
-                  <a
-                    href="https://www.facebook.com/YoChrisGray"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="Facebook"
-                  >
-                    <Facebook className="h-4 w-4" />
-                  </a>
-                </Button>
-                <Button size="sm" variant="outline" asChild>
-                  <a
-                    href="https://www.instagram.com/yochrisgray/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="Instagram"
-                  >
-                    <Instagram className="h-4 w-4" />
-                  </a>
-                </Button>
+                  <Button size="sm" variant="outline" asChild>
+                    <a
+                      href="https://www.youtube.com/@yochrisgray"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="YouTube"
+                    >
+                      <Youtube className="h-4 w-4" />
+                    </a>
+                  </Button>
+                  <Button size="sm" variant="outline" asChild>
+                    <a
+                      href="https://www.facebook.com/YoChrisGray"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Facebook"
+                    >
+                      <Facebook className="h-4 w-4" />
+                    </a>
+                  </Button>
+                  <Button size="sm" variant="outline" asChild>
+                    <a
+                      href="https://www.instagram.com/yochrisgray/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Instagram"
+                    >
+                      <Instagram className="h-4 w-4" />
+                    </a>
+                  </Button>
 
-                <Button size="sm" variant="outline" asChild>
-                  <a
-                    href="https://x.com/YoChrisGray"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="Twitter/X"
-                  >
-                    <Twitter className="h-4 w-4" />
-                  </a>
-                </Button>
+                  <Button size="sm" variant="outline" asChild>
+                    <a
+                      href="https://x.com/YoChrisGray"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Twitter/X"
+                    >
+                      <Twitter className="h-4 w-4" />
+                    </a>
+                  </Button>
 
-                <Button size="sm" variant="outline" asChild>
-                  <a
-                    href="https://www.linkedin.com/in/yochrisgray/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="LinkedIn"
-                  >
-                    <Linkedin className="h-4 w-4" />
-                  </a>
-                </Button>
+                  <Button size="sm" variant="outline" asChild>
+                    <a
+                      href="https://www.linkedin.com/in/yochrisgray/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="LinkedIn"
+                    >
+                      <Linkedin className="h-4 w-4" />
+                    </a>
+                  </Button>
+                </div>
               </div>
               <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
                 <Button asChild size="lg">
