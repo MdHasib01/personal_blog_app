@@ -27,6 +27,7 @@ const Newsletter = () => {
         toast.error("Error subscribing to newsletter");
         throw new Error(`Failed to subscribe: ${response.status}`);
       }
+      setEmail("");
       toast.success("Subscribed to newsletter successfully");
       localStorage.setItem("subscribed", "true");
 

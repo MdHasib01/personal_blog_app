@@ -2,9 +2,14 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Github, Twitter, Linkedin, Mail } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import { FaTiktok } from "react-icons/fa";
+import { FaYoutube } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa";
+import { RiTwitterXFill } from "react-icons/ri";
+import { FaSquareInstagram } from "react-icons/fa6";
+import { FaLinkedin } from "react-icons/fa";
 
 export default function Footer() {
   const [loading, setLoading] = useState(false);
@@ -28,6 +33,7 @@ export default function Footer() {
         toast.error("Error subscribing to newsletter");
         throw new Error(`Failed to subscribe: ${response.status}`);
       }
+      setEmail("");
       toast.success("Subscribed to newsletter successfully");
       localStorage.setItem("subscribed", "true");
 
@@ -46,8 +52,9 @@ export default function Footer() {
         <div className="space-y-3">
           <h3 className="font-playfair text-xl font-bold">Chris Gray</h3>
           <p className="text-muted-foreground text-sm">
-            A personal blog and portfolio showcasing my work and thoughts on
-            technology, design, and development.
+            A passionate entrepreneur, marketer, and co-owner of Red Palm
+            Studios, known for founding Bald Buck Seasoning, the EARN CORE
+            COMMUNITY, and co-hosting the Big Life Podcast.
           </p>
         </div>
 
@@ -55,7 +62,7 @@ export default function Footer() {
           <h4 className="font-medium text-sm uppercase tracking-wider text-muted-foreground">
             Navigation
           </h4>
-          <nav className="flex flex-col space-y-2">
+          <nav className="grid md:grid-cols-2 space-y-2">
             <Link
               href="/"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -69,10 +76,10 @@ export default function Footer() {
               Blog
             </Link>
             <Link
-              href="/portfolio"
+              href="/podcasts"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
-              Portfolio
+              Podcasts
             </Link>
             <Link
               href="/about"
@@ -89,41 +96,63 @@ export default function Footer() {
           </nav>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-3 md:flex md:flex-col items-center">
           <h4 className="font-medium text-sm uppercase tracking-wider text-muted-foreground">
             Connect
           </h4>
-          <div className="flex space-x-3">
-            <Button variant="ghost" size="icon" asChild aria-label="GitHub">
+          <div className="flex md:justify-center gap-2">
+            <Button variant="ghost" size="icon" asChild aria-label="TikTok">
               <Link
-                href="https://github.com"
+                href="https://www.tiktok.com/@yochrisgray"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Github className="h-4 w-4" />
+                <FaTiktok className="h-4 w-4" />
+              </Link>
+            </Button>
+            <Button variant="ghost" size="icon" asChild aria-label="YouTube">
+              <Link
+                href="https://www.youtube.com/@yochrisgray"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaYoutube className="h-4 w-4" />
+              </Link>
+            </Button>
+            <Button variant="ghost" size="icon" asChild aria-label="Facebook">
+              <Link
+                href="https://www.facebook.com/YoChrisGray"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaFacebook className="h-4 w-4" />
+              </Link>
+            </Button>
+            <Button variant="ghost" size="icon" asChild aria-label="Instagram">
+              <Link
+                href="https://www.instagram.com/yochrisgray/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaSquareInstagram className="h-4 w-4" />
               </Link>
             </Button>
             <Button variant="ghost" size="icon" asChild aria-label="Twitter">
               <Link
-                href="https://twitter.com"
+                href="https://x.com/YoChrisGray"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Twitter className="h-4 w-4" />
+                <RiTwitterXFill className="h-4 w-4" />
               </Link>
             </Button>
             <Button variant="ghost" size="icon" asChild aria-label="LinkedIn">
               <Link
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/yochrisgray/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Linkedin className="h-4 w-4" />
-              </Link>
-            </Button>
-            <Button variant="ghost" size="icon" asChild aria-label="Email">
-              <Link href="mailto:contact@ChrisGray.dev">
-                <Mail className="h-4 w-4" />
+                <FaLinkedin className="h-4 w-4" />
               </Link>
             </Button>
           </div>

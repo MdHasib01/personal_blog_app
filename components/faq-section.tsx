@@ -25,13 +25,9 @@ const FaqSection = () => {
             Who is Chris Gray?
           </AccordionTrigger>
           <AccordionContent>
-            Chris Gray is the co-owner of Red Palm Studios, a forward thinking
-            marketing agency dedicated to serving big brands and small
-            businesses within the trades industry. An entrepreneur at heart,
-            Chris turned a personal passion into a thriving business with Bald
-            Buck Seasoning. He's the founder of the EARN CORE COMMUNITY,
-            bringing together over 4,000 entrepreneurs, and co-host of the Big
-            Life Podcast with Dmitri Smirnoff.
+            Chris Gray is a passionate entrepreneur, marketer, and co-owner of
+            Red Palm Studios, known for founding Bald Buck Seasoning, the EARN
+            CORE COMMUNITY, and co-hosting the Big Life Podcast.
           </AccordionContent>
         </AccordionItem>
 
