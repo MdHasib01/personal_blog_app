@@ -35,7 +35,7 @@ const FaqSection = () => {
             >
               EARN CORE COMMUNITY
             </Link>{" "}
-            E, and co-hosting the Big Life Podcast.
+            , and co-hosting the Big Life Podcast.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-2">
