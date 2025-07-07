@@ -52,8 +52,7 @@ export default function Footer() {
         <div className="space-y-3">
           <h3 className="font-playfair text-xl font-bold">Chris Gray</h3>
           <p className="text-muted-foreground text-sm">
-            A passionate entrepreneur, marketer, and co-owner of Red Palm
-            Studios, known for the{" "}
+            The founder and leader of the{" "}
             <Link
               href="https://earncorecommunity.com/"
               className="text-primary hover:underline"
@@ -62,8 +61,11 @@ export default function Footer() {
             >
               EARN CORE COMMUNITY
             </Link>
-            , founding Bald Buck Seasoning and co-hosting the The Amazing
-            Marketing Show.
+            , a platform that empowers entrepreneurs through business strategy,
+            mentorship, and community support. He is also a seasoned marketer,
+            co-owner of Red Palm Studios, founder of the bold-flavor brand Bald
+            Buck Seasoning, and co-host of The Amazing Marketing Show, where he
+            shares actionable insights on entrepreneurship and marketing.
           </p>
         </div>
 

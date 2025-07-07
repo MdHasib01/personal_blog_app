@@ -25,8 +25,7 @@ const FaqSection = () => {
             Who is Chris Gray?
           </AccordionTrigger>
           <AccordionContent>
-            Chris Gray is a passionate entrepreneur, marketer, and co-owner of
-            Red Palm Studios, known for the{" "}
+            Chris Gray is the founder and leader of the{" "}
             <Link
               href="https://earncorecommunity.com/"
               className="text-primary hover:underline"
@@ -34,9 +33,12 @@ const FaqSection = () => {
               rel="noopener noreferrer"
             >
               EARN CORE COMMUNITY
-            </Link>{" "}
-            , founding Bald Buck Seasoning, and co-hosting the The Amazing
-            Marketing Show.
+            </Link>
+            , a platform that empowers entrepreneurs through business strategy,
+            mentorship, and community support. He is also a seasoned marketer,
+            co-owner of Red Palm Studios, founder of the bold-flavor brand Bald
+            Buck Seasoning, and co-host of The Amazing Marketing Show, where he
+            shares actionable insights on entrepreneurship and marketing.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-2">
@@ -94,9 +96,9 @@ const FaqSection = () => {
             Is there a podcast or blog by Chris Gray?
           </AccordionTrigger>
           <AccordionContent>
-            Yes, Chris is co-host of the Big Life{" "}
+            Yes, Chris is co-host of the
             <Link href="/podcasts" className="text-primary hover:underline">
-              podcast
+              The Amazing Marketing Show
             </Link>{" "}
             , where he and Dmitri Smirnoff interview successful entrepreneurs.
             He also continues to innovate through the Bald Buck Newsletter, a
