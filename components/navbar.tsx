@@ -29,6 +29,11 @@ const routes = [
     href: "/contact",
     label: "Contact",
   },
+  {
+    href: "https://linktr.ee/yochrisgray",
+    target: "_blank",
+    label: "Social Links",
+  },
 ];
 
 export default function Navbar() {
@@ -52,6 +57,7 @@ export default function Navbar() {
             <Link
               key={route.href}
               href={route.href}
+              target={route.target}
               className={cn(
                 "text-sm font-medium transition-colors hover:text-primary",
                 pathname === route.href
@@ -91,6 +97,7 @@ export default function Navbar() {
               <Link
                 key={route.href}
                 href={route.href}
+                target={route.target}
                 className={cn(
                   "text-sm font-medium transition-colors hover:text-primary p-2",
                   pathname === route.href
