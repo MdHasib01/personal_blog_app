@@ -5,7 +5,7 @@ import {
   Video,
   Newspaper,
   Mail,
-  ExternalLink,
+  Info,
   Youtube,
   Linkedin,
   Twitter,
@@ -20,6 +20,7 @@ import FaqSection from "@/components/faq-section";
 import Newsletter from "@/components/newsletter";
 
 import { FaTiktok } from "react-icons/fa";
+import NewsletterInput from "@/components/newsletterInput";
 interface Post {
   _id: string;
   title: string;
@@ -102,6 +103,31 @@ export default async function Home() {
                   <span className="block">Entrepreneur</span>
                 </h1>
               </div>
+              <NewsletterInput />
+            </div>
+
+            {/* Image */}
+            <div className="relative flex flex-col gap-4 items-center justify-center lg:justify-end">
+              <div className="relative">
+                {/* Decorative elements */}
+                <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-primary/10 rounded-2xl blur-xl"></div>
+                <div className="absolute -inset-2 bg-gradient-to-r from-primary/30 to-transparent rounded-xl blur-lg"></div>
+
+                {/* Main image container */}
+                <div className="relative aspect-square w-80 md:w-96 rounded-xl overflow-hidden border-4 border-background shadow-2xl">
+                  <Image
+                    src={img}
+                    alt="Chris Gray - Portrait"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+
+                {/* Floating accent elements */}
+                <div className="absolute -top-4 -right-4 w-8 h-8 bg-primary/20 rounded-full blur-sm"></div>
+                <div className="absolute -bottom-6 -left-6 w-12 h-12 bg-primary/15 rounded-full blur-md"></div>
+              </div>
               {/* Social Links */}
               <div className="flex justify-center lg:justify-start">
                 <div className="flex items-center gap-3 pt-2 flex-wrap">
@@ -177,38 +203,10 @@ export default async function Home() {
                   </Link>
                 </Button>
                 <Button variant="outline" size="lg" asChild>
-                  <Link
-                    href="https://linktr.ee/yochrisgray"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Social Links <ExternalLink className="ml-2 h-4 w-4" />
+                  <Link href={"/about"}>
+                    About Me <Info className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
-              </div>
-            </div>
-
-            {/* Image */}
-            <div className="relative flex justify-center lg:justify-end">
-              <div className="relative">
-                {/* Decorative elements */}
-                <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-primary/10 rounded-2xl blur-xl"></div>
-                <div className="absolute -inset-2 bg-gradient-to-r from-primary/30 to-transparent rounded-xl blur-lg"></div>
-
-                {/* Main image container */}
-                <div className="relative aspect-square w-80 md:w-96 rounded-xl overflow-hidden border-4 border-background shadow-2xl">
-                  <Image
-                    src={img}
-                    alt="Chris Gray - Portrait"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-
-                {/* Floating accent elements */}
-                <div className="absolute -top-4 -right-4 w-8 h-8 bg-primary/20 rounded-full blur-sm"></div>
-                <div className="absolute -bottom-6 -left-6 w-12 h-12 bg-primary/15 rounded-full blur-md"></div>
               </div>
             </div>
           </div>
