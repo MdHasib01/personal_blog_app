@@ -51,7 +51,7 @@ export default function Footer() {
       <div className="container grid grid-cols-1 md:grid-cols-4 gap-8">
         <div className="space-y-3">
           <h3 className="font-playfair text-xl font-bold">Chris Gray</h3>
-          <p className="text-muted-foreground text-sm">
+          <p className="text-muted-foreground text-sm text-justify">
             The founder and leader of the{" "}
             <Link
               href="https://earncorecommunity.com/"
