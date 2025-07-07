@@ -26,7 +26,7 @@ const FaqSection = () => {
           </AccordionTrigger>
           <AccordionContent>
             Chris Gray is a passionate entrepreneur, marketer, and co-owner of
-            Red Palm Studios, known for founding Bald Buck Seasoning, the{" "}
+            Red Palm Studios, known for the{" "}
             <Link
               href="https://earncorecommunity.com/"
               className="text-primary hover:underline"
@@ -35,7 +35,8 @@ const FaqSection = () => {
             >
               EARN CORE COMMUNITY
             </Link>{" "}
-            , and co-hosting the Big Life Podcast.
+            , founding Bald Buck Seasoning, and co-hosting the The Amazing
+            Marketing Show.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-2">

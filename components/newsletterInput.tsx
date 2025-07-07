@@ -46,7 +46,7 @@ const NewsletterInput = () => {
       <Label>Subscribe to newsletter</Label>
       <form
         onSubmit={() => SubscribeToNewsletter(email)}
-        className="flex flex-col sm:flex-row   gap-3 md:max-w-md max-w-sm mx-auto md:mx-0 my-2"
+        className="flex flex-col sm:flex-row   gap-3 md:max-w-md max-w-sm mx-auto lg:mx-0 my-2"
       >
         <Input
           value={email}

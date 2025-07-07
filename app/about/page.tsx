@@ -33,7 +33,7 @@ import img from "../assets/avatar.jpg";
 export const metadata: Metadata = {
   title: "About Chris Gray | Entrepreneur & Community Builder",
   description:
-    "Co-owner of Red Palm Studios, founder of EARN CORE COMMUNITY with 4,000+ entrepreneurs, and co-host of Big Life Podcast. Passionate about entrepreneurship, marketing, and community building.",
+    "Co-owner of Red Palm Studios, founder of EARN CORE COMMUNITY with 4,000+ entrepreneurs, and co-host of The Amazing Marketing Show. Passionate about entrepreneurship, marketing, and community building.",
 };
 
 export default function AboutPage() {
@@ -64,7 +64,7 @@ export default function AboutPage() {
       status: "Thriving",
     },
     {
-      name: "The amazing marketing show",
+      name: "The Amazing Marketing Show",
       role: "Co-Host",
       description:
         "Interviewing successful entrepreneurs with co-host Dmitri Smirnoff",
