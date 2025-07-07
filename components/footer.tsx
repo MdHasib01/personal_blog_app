@@ -96,6 +96,13 @@ export default function Footer() {
               About
             </Link>
             <Link
+              href="https://linktr.ee/yochrisgray"
+              target="_blank"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Social Links
+            </Link>
+            <Link
               href="/contact"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
