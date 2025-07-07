@@ -16,7 +16,6 @@ import { BlogCard } from "@/components/blog-card";
 import { VideoCard } from "@/components/video-card";
 import { FeaturedSection } from "@/components/featured-section";
 import img from "./assets/avatar.jpg";
-import { SubscribePopup } from "@/components/subscribe-popup";
 import FaqSection from "@/components/faq-section";
 import Newsletter from "@/components/newsletter";
 
@@ -264,7 +263,6 @@ export default async function Home() {
       <section className="py-16 bg-muted/50">
         <Newsletter />
       </section>
-      <SubscribePopup />
     </div>
   );
 }

@@ -64,7 +64,7 @@ export default function AboutPage() {
       status: "Thriving",
     },
     {
-      name: "Big Life Podcast",
+      name: "The amazing marketing show",
       role: "Co-Host",
       description:
         "Interviewing successful entrepreneurs with co-host Dmitri Smirnoff",
