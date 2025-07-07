@@ -50,22 +50,22 @@ const Newsletter = () => {
           Subscribe to my newsletter for the latest blog posts, project updates,
           and exclusive content.
         </p>
-        <div className="flex flex-col sm:flex-row justify-center  gap-3 max-w-md mx-auto">
+        <form
+          onSubmit={() => SubscribeToNewsletter(email)}
+          className="flex flex-col sm:flex-row justify-center  gap-3 max-w-md mx-auto"
+        >
           <Input
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
             type="email"
             placeholder="Enter your email"
             className="h-12 px-2 rounded-md"
           />
-          <Button
-            disabled={loading}
-            onClick={() => SubscribeToNewsletter(email)}
-            className="h-12"
-          >
+          <Button disabled={loading} type="submit" className="h-12">
             {loading ? "Subscribing..." : "Subscribe"}
           </Button>
-        </div>
+        </form>
         <p className="text-xs text-muted-foreground">
           I respect your privacy. Unsubscribe at any time.
         </p>

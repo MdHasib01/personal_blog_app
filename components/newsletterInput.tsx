@@ -44,22 +44,22 @@ const NewsletterInput = () => {
   return (
     <div>
       <Label>Subscribe to newsletter</Label>
-      <div className="flex flex-col sm:flex-row   gap-3 md:max-w-md max-w-sm mx-auto md:mx-0 my-2">
+      <form
+        onSubmit={() => SubscribeToNewsletter(email)}
+        className="flex flex-col sm:flex-row   gap-3 md:max-w-md max-w-sm mx-auto md:mx-0 my-2"
+      >
         <Input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           type="email"
+          required
           placeholder="Enter your email"
           className="h-12 px-2 rounded-md"
         />
-        <Button
-          disabled={loading}
-          onClick={() => SubscribeToNewsletter(email)}
-          className="h-12"
-        >
+        <Button disabled={loading} type="submit" className="h-12">
           {loading ? "Subscribing..." : "Subscribe"}
         </Button>
-      </div>
+      </form>
       <p className="text-xs text-muted-foreground">
         I respect your privacy. Unsubscribe at any time.
       </p>

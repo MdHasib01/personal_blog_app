@@ -180,22 +180,22 @@ export default function Footer() {
           <p className="text-muted-foreground text-sm">
             Get notified about new posts and projects.
           </p>
-          <div className="flex gap-2">
+          <form
+            onSubmit={() => SubscribeToNewsletter(email)}
+            className="flex gap-2"
+          >
             <Input
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
               placeholder="Your email"
               type="email"
               className="h-9"
             />
-            <Button
-              disabled={loading}
-              onClick={() => SubscribeToNewsletter(email)}
-              size="sm"
-            >
+            <Button disabled={loading} type="submit" size="sm">
               {loading ? "Subscribing..." : "Subscribe"}
             </Button>
-          </div>
+          </form>
         </div>
       </div>
 
