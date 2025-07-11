@@ -14,7 +14,8 @@ import { FaLinkedin } from "react-icons/fa";
 export default function Footer() {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
-  async function SubscribeToNewsletter(email: string) {
+  async function SubscribeToNewsletter(e: any) {
+    e.preventDefault();
     setLoading(true);
     try {
       const response = await fetch(
@@ -184,7 +185,7 @@ export default function Footer() {
             Get notified about new posts and projects.
           </p>
           <form
-            onSubmit={() => SubscribeToNewsletter(email)}
+            onSubmit={(e) => SubscribeToNewsletter(e)}
             className="flex gap-2"
           >
             <Input

@@ -8,7 +8,8 @@ import { Button } from "./ui/button";
 const Newsletter = () => {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
-  async function SubscribeToNewsletter(email: string) {
+  async function SubscribeToNewsletter(event: any) {
+    event.preventDefault();
     setLoading(true);
     try {
       const response = await fetch(
@@ -51,7 +52,7 @@ const Newsletter = () => {
           and exclusive content.
         </p>
         <form
-          onSubmit={() => SubscribeToNewsletter(email)}
+          onSubmit={(e) => SubscribeToNewsletter(e)}
           className="flex flex-col sm:flex-row justify-center  gap-3 max-w-md mx-auto"
         >
           <Input

@@ -9,7 +9,16 @@ import { Label } from "./ui/label";
 const NewsletterInput = () => {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
-  async function SubscribeToNewsletter(email: string) {
+  /*************  ✨ Windsurf Command ⭐  *************/
+  /**
+   * Subscribes to the newsletter using the provided email address.
+   * @param e The event that triggered this function.
+   * @throws {Error} If the fetch request fails.
+   * @returns {Promise<void>} A promise that resolves once the request has completed.
+   */
+  /*******  d0512023-4d41-4d04-a1d6-067c853050a1  *******/
+  async function SubscribeToNewsletter(e: any) {
+    e.preventDefault();
     setLoading(true);
     try {
       const response = await fetch(
@@ -45,7 +54,7 @@ const NewsletterInput = () => {
     <div>
       <Label>Subscribe to newsletter</Label>
       <form
-        onSubmit={() => SubscribeToNewsletter(email)}
+        onSubmit={(e) => SubscribeToNewsletter(e)}
         className="flex flex-col sm:flex-row   gap-3 md:max-w-md max-w-sm mx-auto lg:mx-0 my-2"
       >
         <Input
