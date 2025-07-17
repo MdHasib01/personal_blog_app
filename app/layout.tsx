@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { Toaster } from "@/components/ui/sonner";
+import Script from "next/script";
 export const metadata: Metadata = {
   title: "Chris Gray - Entrepreneur, Community Builder & Marketing Expert",
   description:
@@ -44,6 +45,57 @@ export default function RootLayout({
             <Toaster />
           </div>
         </ThemeProvider>
+        <Script
+          id="structured-data"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Chris Gray",
+              alternateName: "YoChrisGray",
+              image:
+                "https://www.yochrisgray.com/_next/static/media/avatar.d61f74b2.jpg",
+              jobTitle: "Entrepreneur, Community Builder & Marketing Expert",
+              sameAs: [
+                "https://earncorecommunity.com/",
+                "https://www.tiktok.com/@yochrisgray",
+                "https://www.youtube.com/@yochrisgray",
+                "https://www.facebook.com/YoChrisGray",
+                "https://www.instagram.com/yochrisgray/",
+                "https://x.com/YoChrisGray",
+                "https://www.linkedin.com/in/yochrisgray/",
+              ],
+              url: "https://yochrisgray.com/about",
+              worksFor: [
+                {
+                  "@type": "Organization",
+                  name: "EARN CORE COMMUNITY",
+                },
+                {
+                  "@type": "Organization",
+                  name: "Red Palm Studios",
+                },
+                {
+                  "@type": "Organization",
+                  name: "Hustlers Digest",
+                },
+              ],
+              alumniOf: "N/A",
+              description:
+                "Chris Gray is a serial entrepreneur, husband, father, and community-building expert. He co-owns Red Palm Studios and founded EARN CORE COMMUNITY, a thriving network of over 4,000 entrepreneurs.",
+              knowsAbout: [
+                "Automation",
+                "Branding",
+                "Entrepreneurship",
+                "Community Building",
+                "Social Media",
+                "Podcasting",
+              ],
+              memberOf: "EARN CORE COMMUNITY",
+            }),
+          }}
+        />
       </body>
     </html>
   );
