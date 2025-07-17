@@ -167,6 +167,7 @@ export default async function BlogPostPage({
                   alt="Chris Gray"
                   width={40}
                   height={40}
+                  loading="lazy"
                   className="rounded-full h-10 w-10 object-cover"
                 />
               </div>

@@ -77,10 +77,10 @@ export default function ContactPage() {
     <div className="container py-12 md:py-16">
       <div className="max-w-3xl mx-auto text-center space-y-3 mb-12">
         <h1 className="font-playfair text-4xl md:text-5xl font-bold tracking-tight">
-          Let's Connect
+          Let&apos;s Connect
         </h1>
         <p className="text-muted-foreground text-lg">
-          Ready to add value to your audience? Let's have an authentic
+          Ready to add value to your audience? Let&apo;s have an authentic
           conversation that provides real impact.
         </p>
       </div>

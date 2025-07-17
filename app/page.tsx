@@ -120,7 +120,7 @@ export default async function Home() {
                     alt="Chris Gray - Portrait"
                     fill
                     className="object-cover"
-                    priority
+                    loading="lazy"
                   />
                 </div>
 
