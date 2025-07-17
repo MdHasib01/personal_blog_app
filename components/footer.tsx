@@ -65,8 +65,12 @@ export default function Footer() {
             , a platform that empowers entrepreneurs through business strategy,
             mentorship, and community support. He is also a seasoned marketer,
             co-owner of Red Palm Studios, founder of the bold-flavor brand Bald
-            Buck Seasoning, and co-host of The Amazing Marketing Show, where he
-            shares actionable insights on entrepreneurship and marketing.
+            Buck Seasoning, and co-host of{" "}
+            <Link href="/podcasts" className="text-primary hover:underline">
+              The Amazing Marketing Show
+            </Link>
+            , where he shares actionable insights on entrepreneurship and
+            marketing.
           </p>
         </div>
 

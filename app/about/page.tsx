@@ -4,10 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
-  Download,
   Mail,
-  MapPin,
-  Calendar,
   Youtube,
   Linkedin,
   Twitter,
@@ -196,8 +193,8 @@ export default function AboutPage() {
 
           <p className="text-muted-foreground leading-relaxed">
             Away from work, Chris is a devoted husband and father, a committed
-            Brazilian jiu-jitsu practitioner, and an "undercover geek" who
-            brings unbridled passion to every facet of his life.
+            Brazilian jiu-jitsu practitioner, and an &quot;undercover geek&quot;
+            who brings unbridled passion to every facet of his life.
           </p>
 
           {/* Social Links */}
@@ -277,7 +274,7 @@ export default function AboutPage() {
             <Button variant="outline" size="lg" asChild>
               <Link href="/contact">
                 <MessageCircle className="mr-2 h-4 w-4" />
-                Let's Connect
+                Let&apos;s Connect
               </Link>
             </Button>
           </div>
@@ -397,9 +394,9 @@ export default function AboutPage() {
             <CardContent className="space-y-4">
               <p className="text-muted-foreground">
                 Chris is a devoted husband and father who brings the same
-                passion he has for business to his family life. He's committed
-                to maintaining a healthy work-life balance and believes that
-                family success fuels business success.
+                passion he has for business to his family life. He&apos;s
+                committed to maintaining a healthy work-life balance and
+                believes that family success fuels business success.
               </p>
               <div className="flex flex-wrap gap-2">
                 <Badge variant="secondary" className="text-sm">
@@ -424,10 +421,10 @@ export default function AboutPage() {
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-muted-foreground">
-                Whether he's helping clients elevate their brand, perfecting a
-                new seasoning blend, or sharpening his "mediocre" jiu-jitsu
-                skills, Chris brings unbridled passion and determination to
-                every facet of his life.
+                Whether he&apos;s helping clients elevate their brand,
+                perfecting a new seasoning blend, or sharpening his
+                &quot;mediocre&quot; jiu-jitsu skills, Chris brings unbridled
+                passion and determination to every facet of his life.
               </p>
               <p className="text-muted-foreground">
                 His goal in every conversation is to provide authentic, tactical
@@ -447,7 +444,7 @@ export default function AboutPage() {
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
               Chris wants to have an authentic yet tactical conversation with
               you. The goal is for your followers to walk away with actionable
-              tips they can implement today. He'll also share your content
+              tips they can implement today. He&apos;ll also share your content
               across his social media and to his community of 4,000+
               entrepreneurs.
             </p>
@@ -461,7 +458,7 @@ export default function AboutPage() {
               <Button variant="outline" size="lg" asChild>
                 <Link href="/contact">
                   <MessageCircle className="mr-2 h-4 w-4" />
-                  Let's Connect
+                  Let&apos;s Connect
                 </Link>
               </Button>
             </div>
