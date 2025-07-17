@@ -5,9 +5,22 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { Toaster } from "@/components/ui/sonner";
 export const metadata: Metadata = {
-  title: "Personal Blog & Portfolio",
+  title: "Chris Gray - Entrepreneur, Community Builder & Marketing Expert",
   description:
-    "My personal blog and portfolio website showcasing my work and thoughts.",
+    "Meet Chris Gray, an entrepreneur, marketing expert, and founder of EARN CORE COMMUNITY. Learn about his business ventures, passions, and how he empowers 4,000+ entrepreneurs.",
+  openGraph: {
+    url: "https://yochrisgray.com/about",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: "https://yochrisgray.com/about",
+  },
 };
 
 export default function RootLayout({
