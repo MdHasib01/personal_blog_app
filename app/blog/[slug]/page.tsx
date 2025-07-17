@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react";
 import React from "react";
-import avatar from "../../assets/avatar.jpg";
+import avatar from "../../assets/Chris Gray.jpg";
 
 interface Post {
   _id: string;
@@ -24,7 +24,7 @@ async function getPost(id: string): Promise<Post | null> {
       `${process.env.NEXT_PUBLIC_API_URL}/api/posts/${id}`,
       {
         next: { revalidate: 3600 },
-        
+
         cache: "force-cache",
       }
     );
@@ -47,7 +47,7 @@ async function getAllPosts(): Promise<Post[]> {
       `${process.env.NEXT_PUBLIC_API_URL}/api/posts`,
       {
         next: { revalidate: 3600 },
-       
+
         cache: "force-cache",
       }
     );
@@ -64,20 +64,17 @@ async function getAllPosts(): Promise<Post[]> {
   }
 }
 
-
 export async function generateStaticParams() {
   try {
     const posts = await getAllPosts();
 
-    
     console.log("Posts found for static generation:", posts.length);
     posts.forEach((post) => {
       console.log("Post ID:", post._id, "Title:", post.title);
     });
 
-   
     const params = posts.map((post) => ({
-      slug: post._id, 
+      slug: post._id,
     }));
 
     console.log("Generated params:", params);
@@ -119,7 +116,6 @@ export default async function BlogPostPage({
 }: {
   params: { slug: string };
 }) {
-  
   console.log("Requested slug:", params.slug);
 
   const post = await getPost(params.slug);

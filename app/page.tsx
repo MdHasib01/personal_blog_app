@@ -15,7 +15,7 @@ import {
 import { BlogCard } from "@/components/blog-card";
 import { VideoCard } from "@/components/video-card";
 import { FeaturedSection } from "@/components/featured-section";
-import img from "./assets/avatar.jpg";
+import img from "./assets/Chris Gray.jpg";
 import FaqSection from "@/components/faq-section";
 import Newsletter from "@/components/newsletter";
 

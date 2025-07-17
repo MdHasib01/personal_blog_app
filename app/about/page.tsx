@@ -28,7 +28,7 @@ import {
 import { FaTiktok } from "react-icons/fa";
 import Link from "next/link";
 
-import img from "../assets/avatar.jpg";
+import img from "../assets/Chris Gray.jpg";
 
 export const metadata: Metadata = {
   title: "About Chris Gray | Entrepreneur & Community Builder",
