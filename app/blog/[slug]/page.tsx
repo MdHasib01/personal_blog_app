@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react";
 import React from "react";
 import avatar from "../../assets/Chris Gray.jpg";
+import { BlogCard } from "@/components/blog-card";
 
 interface Post {
   _id: string;
@@ -57,6 +58,7 @@ async function getAllPosts(): Promise<Post[]> {
     }
 
     const posts = await response.json();
+
     return posts;
   } catch (error) {
     console.error("Error fetching posts:", error);
@@ -119,7 +121,9 @@ export default async function BlogPostPage({
   console.log("Requested slug:", params.slug);
 
   const post = await getPost(params.slug);
+  const posts = await getAllPosts();
 
+  const filteredPosts = posts.filter((p) => p.category === post?.category);
   if (!post) {
     console.log("Post not found for slug:", params.slug);
     notFound();
@@ -203,10 +207,20 @@ export default async function BlogPostPage({
           </h2>
 
           {/* You can implement related posts logic here */}
-          <div className="text-center text-muted-foreground mb-8">
-            <p>
-              Related posts will be displayed here based on category matching.
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 min-h-[400px]">
+            {filteredPosts.length > 0 ? (
+              filteredPosts
+                .slice(0, 3)
+                .map((post) => <BlogCard key={post._id} post={post} />)
+            ) : (
+              <div className="col-span-full text-center py-12">
+                <p className="text-muted-foreground text-lg">
+                  {filteredPosts.length === 0 && posts.length > 0
+                    ? "No articles match your search criteria."
+                    : "No blog posts available at the moment."}
+                </p>
+              </div>
+            )}
           </div>
 
           <div className="mt-10 text-center">
