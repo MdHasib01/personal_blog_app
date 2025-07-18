@@ -226,12 +226,12 @@ export default async function BlogPostPage({
 
           {/* Post Content */}
           <div className="prose prose-lg dark:prose-invert max-w-none">
-            <p className="lead text-xl text-muted-foreground mb-8">
+            <p className="lead text-xl text-muted-foreground mb-8 text-justify md:text-left">
               {post.summary}
             </p>
             <div
               dangerouslySetInnerHTML={{ __html: post.content }}
-              className="mt-8"
+              className="mt-8 text-justify md:text-left"
             />
           </div>
         </div>
