@@ -4,10 +4,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react";
-import React from "react";
+import { ArrowLeft, Calendar } from "lucide-react";
 import avatar from "../../assets/Chris Gray.jpg";
 import { BlogCard } from "@/components/blog-card";
+import { ShareDialog } from "@/components/ShareDialog";
 
 interface Post {
   _id: string;
@@ -25,7 +25,6 @@ async function getPost(id: string): Promise<Post | null> {
       `${process.env.NEXT_PUBLIC_API_URL}/api/posts/${id}`,
       {
         next: { revalidate: 3600 },
-
         cache: "force-cache",
       }
     );
@@ -48,7 +47,6 @@ async function getAllPosts(): Promise<Post[]> {
       `${process.env.NEXT_PUBLIC_API_URL}/api/posts`,
       {
         next: { revalidate: 3600 },
-
         cache: "force-cache",
       }
     );
@@ -180,10 +178,7 @@ export default async function BlogPostPage({
                 <p className="text-sm text-muted-foreground">Mentor</p>
               </div>
             </div>
-            <Button variant="ghost" size="sm">
-              <Share2 className="h-4 w-4 mr-2" />
-              Share
-            </Button>
+            <ShareDialog post={post} />
           </div>
 
           {/* Post Content */}
