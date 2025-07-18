@@ -17,6 +17,8 @@ interface Post {
   publishedAt: string;
   summary: string;
   category: string;
+  videoId?: string;
+  videoUrl?: string;
 }
 
 async function getPost(id: string): Promise<Post | null> {
@@ -193,6 +195,26 @@ export default async function BlogPostPage({
           </div>
         </div>
       </div>
+
+      {/* Video Section */}
+      {post.videoId && (
+        <div className="container mt-16">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="font-playfair text-2xl font-bold mb-6">
+              Watch Video
+            </h2>
+            <div className="relative aspect-video rounded-lg overflow-hidden bg-muted">
+              <iframe
+                src={`https://www.youtube.com/embed/${post.videoId}`}
+                title={post.title}
+                className="absolute inset-0 w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Related Posts */}
       <div className="container mt-16">
