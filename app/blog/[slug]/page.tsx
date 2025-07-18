@@ -17,8 +17,6 @@ interface Post {
   publishedAt: string;
   summary: string;
   category: string;
-  videoId?: string;
-  videoUrl?: string;
 }
 
 async function getPost(id: string): Promise<Post | null> {
@@ -97,18 +95,80 @@ export async function generateMetadata({
 
   if (!post) {
     return {
-      title: "Post Not Found",
+      title: "Post Not Found | Chris Gray Blog",
       description: "The requested blog post could not be found.",
+      robots: {
+        index: false,
+        follow: false,
+      },
     };
   }
 
+  const postUrl = `https://yochrisgray.com/blogs/${post._id}`;
+  const publishedDate = new Date(post.publishedAt).toISOString();
+  const imageAlt = `${post.title} - Blog post by Chris Gray`;
+
   return {
-    title: `${post.title} | Blog`,
+    title: `${post.title} | Chris Gray Blog`,
     description: post.summary,
+    keywords: [
+      post.category,
+      "Chris Gray",
+      "blog",
+      "mentor",
+      "leadership",
+      "personal development",
+      ...post.title.split(" ").filter((word) => word.length > 3),
+    ],
+    authors: [{ name: "Chris Gray", url: "https://yochrisgray.com" }],
+    creator: "Chris Gray",
+    publisher: "Chris Gray",
+    category: post.category,
+    alternates: {
+      canonical: postUrl,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
     openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.summary,
+      url: postUrl,
+      siteName: "Chris Gray Blog",
+      images: [
+        {
+          url: post.cloudinaryImageUrl,
+          width: 1200,
+          height: 630,
+          alt: imageAlt,
+        },
+      ],
+      publishedTime: publishedDate,
+      authors: ["Chris Gray"],
+      section: post.category,
+    },
+    twitter: {
+      card: "summary_large_image",
       title: post.title,
       description: post.summary,
       images: [post.cloudinaryImageUrl],
+      creator: "@yochrisgray",
+      site: "@yochrisgray",
+    },
+    other: {
+      "article:published_time": publishedDate,
+      "article:author": "Chris Gray",
+      "article:section": post.category,
+      "article:tag": post.category,
     },
   };
 }
@@ -129,127 +189,145 @@ export default async function BlogPostPage({
     notFound();
   }
 
+  // JSON-LD structured data for SEO
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.summary,
+    image: [post.cloudinaryImageUrl],
+    datePublished: post.publishedAt,
+    dateModified: post.publishedAt,
+    author: {
+      "@type": "Person",
+      name: "Chris Gray",
+      url: "https://yochrisgray.com",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Chris Gray",
+      url: "https://yochrisgray.com",
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://yochrisgray.com/blogs/${post._id}`,
+    },
+    articleSection: post.category,
+    keywords: post.category,
+  };
+
   return (
-    <article className="pb-16">
-      {/* Hero Section */}
-      <div className="relative h-[40vh] md:h-[60vh] w-full">
-        <Image
-          src={post.cloudinaryImageUrl}
-          alt={post.title}
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
-      </div>
+    <>
+      {/* JSON-LD structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
-      <div className="container relative -mt-16 md:-mt-24">
-        <div className="bg-background border border-border/40 rounded-lg p-6 md:p-10 shadow-sm max-w-4xl mx-auto">
-          <div className="flex flex-wrap items-center gap-4 mb-4">
-            <Badge variant="secondary" className="font-normal">
-              {post.category}
-            </Badge>
-            <div className="flex items-center text-sm text-muted-foreground">
-              <Calendar className="h-4 w-4 mr-1" />
-              {new Date(post.publishedAt).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </div>
-          </div>
-
-          <h1 className="font-playfair text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
-            {post.title}
-          </h1>
-
-          <div className="flex items-center justify-between mb-10">
-            <div className="flex items-center">
-              <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center mr-3">
-                <Image
-                  src={avatar}
-                  alt="Chris Gray"
-                  width={40}
-                  height={40}
-                  loading="lazy"
-                  className="rounded-full h-10 w-10 object-cover"
-                />
-              </div>
-              <div>
-                <p className="font-medium">Chris Gray</p>
-                <p className="text-sm text-muted-foreground">Mentor</p>
-              </div>
-            </div>
-            <ShareDialog post={post} />
-          </div>
-
-          {/* Post Content */}
-          <div className="prose prose-lg dark:prose-invert max-w-none">
-            <p className="lead text-xl text-muted-foreground mb-8">
-              {post.summary}
-            </p>
-            <div
-              dangerouslySetInnerHTML={{ __html: post.content }}
-              className="mt-8"
-            />
-          </div>
+      <article className="pb-16">
+        {/* Hero Section */}
+        <div className="relative h-[40vh] md:h-[60vh] w-full">
+          <Image
+            src={post.cloudinaryImageUrl}
+            alt={`${post.title} - Blog post by Chris Gray`}
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
         </div>
-      </div>
 
-      {/* Video Section */}
-      {post.videoId && (
-        <div className="container mt-16">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="font-playfair text-2xl font-bold mb-6">
-              Watch Video
-            </h2>
-            <div className="relative aspect-video rounded-lg overflow-hidden bg-muted">
-              <iframe
-                src={`https://www.youtube.com/embed/${post.videoId}`}
-                title={post.title}
-                className="absolute inset-0 w-full h-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
+        <div className="container relative -mt-16 md:-mt-24">
+          <div className="bg-background border border-border/40 rounded-lg p-6 md:p-10 shadow-sm max-w-4xl mx-auto">
+            <div className="flex flex-wrap items-center gap-4 mb-4">
+              <Badge variant="secondary" className="font-normal">
+                {post.category}
+              </Badge>
+              <div className="flex items-center text-sm text-muted-foreground">
+                <Calendar className="h-4 w-4 mr-1" />
+                <time dateTime={post.publishedAt}>
+                  {new Date(post.publishedAt).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </time>
+              </div>
+            </div>
+
+            <header>
+              <h1 className="font-playfair text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
+                {post.title}
+              </h1>
+            </header>
+
+            <div className="flex items-center justify-between mb-10">
+              <div className="flex items-center">
+                <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center mr-3">
+                  <Image
+                    src={avatar}
+                    alt="Chris Gray - Mentor and Author"
+                    width={40}
+                    height={40}
+                    loading="lazy"
+                    className="rounded-full h-10 w-10 object-cover"
+                  />
+                </div>
+                <div>
+                  <p className="font-medium">Chris Gray</p>
+                  <p className="text-sm text-muted-foreground">Mentor</p>
+                </div>
+              </div>
+              <ShareDialog post={post} />
+            </div>
+
+            {/* Post Content */}
+            <div className="prose prose-lg dark:prose-invert max-w-none">
+              <p className="lead text-xl text-muted-foreground mb-8">
+                {post.summary}
+              </p>
+              <div
+                dangerouslySetInnerHTML={{ __html: post.content }}
+                className="mt-8"
               />
             </div>
           </div>
         </div>
-      )}
 
-      {/* Related Posts */}
-      <div className="container mt-16">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="font-playfair text-2xl font-bold mb-6">
-            Related Posts
-          </h2>
+        {/* Related Posts */}
+        <aside className="container mt-16">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="font-playfair text-2xl font-bold mb-6">
+              Related Posts
+            </h2>
 
-          {/* You can implement related posts logic here */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 min-h-[400px]">
-            {filteredPosts.length > 0 ? (
-              filteredPosts
-                .slice(0, 3)
-                .map((post) => <BlogCard key={post._id} post={post} />)
-            ) : (
-              <div className="col-span-full text-center py-12">
-                <p className="text-muted-foreground text-lg">
-                  {filteredPosts.length === 0 && posts.length > 0
-                    ? "No articles match your search criteria."
-                    : "No blog posts available at the moment."}
-                </p>
-              </div>
-            )}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 min-h-[400px]">
+              {filteredPosts.length > 0 ? (
+                filteredPosts
+                  .slice(0, 3)
+                  .map((post) => <BlogCard key={post._id} post={post} />)
+              ) : (
+                <div className="col-span-full text-center py-12">
+                  <p className="text-muted-foreground text-lg">
+                    {filteredPosts.length === 0 && posts.length > 0
+                      ? "No articles match your search criteria."
+                      : "No blog posts available at the moment."}
+                  </p>
+                </div>
+              )}
+            </div>
+
+            <div className="mt-10 text-center">
+              <Button variant="outline" asChild>
+                <Link href="/blog">
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  Back to Blog
+                </Link>
+              </Button>
+            </div>
           </div>
-
-          <div className="mt-10 text-center">
-            <Button variant="outline" asChild>
-              <Link href="/blog">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Back to Blog
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </div>
-    </article>
+        </aside>
+      </article>
+    </>
   );
 }
