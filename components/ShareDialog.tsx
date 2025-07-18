@@ -25,7 +25,7 @@ interface ShareDialogProps {
 
 export function ShareDialog({ post }: ShareDialogProps) {
   const [copied, setCopied] = useState(false);
-  const postUrl = `https://yochrisgray.com/blogs/${post._id}`;
+  const postUrl = `https://www.yochrisgray.com/blogs/${post._id}`;
 
   const copyToClipboard = async () => {
     try {
