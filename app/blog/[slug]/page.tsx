@@ -150,11 +150,13 @@ export async function generateMetadata({
           width: 1200,
           height: 630,
           alt: imageAlt,
+          type: "image/jpeg",
         },
       ],
       publishedTime: publishedDate,
       authors: ["Chris Gray"],
       section: post.category,
+      locale: "en_US",
     },
     twitter: {
       card: "summary_large_image",
@@ -169,6 +171,16 @@ export async function generateMetadata({
       "article:author": "Chris Gray",
       "article:section": post.category,
       "article:tag": post.category,
+      // Additional Open Graph tags for better compatibility
+      "og:image:secure_url": post.cloudinaryImageUrl,
+      "og:image:type": "image/jpeg",
+      "og:image:width": "1200",
+      "og:image:height": "630",
+      "og:image:alt": imageAlt,
+      // WhatsApp specific
+      "whatsapp:image": post.cloudinaryImageUrl,
+      // Telegram specific
+      "telegram:image": post.cloudinaryImageUrl,
     },
   };
 }
