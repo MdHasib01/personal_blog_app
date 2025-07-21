@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import { ProjectCard } from "@/components/project-card";
 import { Button } from "@/components/ui/button";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "Portfolio | Personal Blog & Portfolio",
@@ -84,38 +86,44 @@ export default function PortfolioPage() {
   );
 
   return (
-    <div className="container py-12 md:py-16">
-      <div className="max-w-3xl mx-auto text-center space-y-3 mb-12">
-        <h1 className="font-playfair text-4xl md:text-5xl font-bold tracking-tight">
-          Portfolio
-        </h1>
-        <p className="text-muted-foreground text-lg">
-          A collection of my work, personal projects, and open-source
-          contributions.
-        </p>
-      </div>
+    <>
+      <Navbar />
 
-      {/* Filter buttons */}
-      <div className="flex flex-wrap justify-center gap-2 mb-12">
-        <Button
-          variant="outline"
-          className="bg-primary text-primary-foreground hover:bg-primary/90"
-        >
-          All Projects
-        </Button>
-        {allTags.map((tag) => (
-          <Button key={tag} variant="outline">
-            {tag}
+      <div className="container py-12 md:py-16">
+        <div className="max-w-3xl mx-auto text-center space-y-3 mb-12">
+          <h1 className="font-playfair text-4xl md:text-5xl font-bold tracking-tight">
+            Portfolio
+          </h1>
+          <p className="text-muted-foreground text-lg">
+            A collection of my work, personal projects, and open-source
+            contributions.
+          </p>
+        </div>
+
+        {/* Filter buttons */}
+        <div className="flex flex-wrap justify-center gap-2 mb-12">
+          <Button
+            variant="outline"
+            className="bg-primary text-primary-foreground hover:bg-primary/90"
+          >
+            All Projects
           </Button>
-        ))}
+          {allTags.map((tag) => (
+            <Button key={tag} variant="outline">
+              {tag}
+            </Button>
+          ))}
+        </div>
+
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
       </div>
 
-      {/* Projects Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
-        ))}
-      </div>
-    </div>
+      <Footer />
+    </>
   );
 }

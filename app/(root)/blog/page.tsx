@@ -6,6 +6,8 @@ import { BlogCard } from "@/components/blog-card";
 import { Button } from "@/components/ui/button";
 import { Filter, Search, ChevronLeft, ChevronRight } from "lucide-react";
 import CategoriesSection from "@/components/filter";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 
 // Define the Post type
 interface Post {
@@ -160,124 +162,128 @@ export default function BlogPage() {
   }
 
   return (
-    <div className="container py-12 md:py-16">
-      <div className="max-w-3xl mx-auto text-center space-y-3 mb-12">
-        <h1 className="font-playfair text-4xl md:text-5xl font-bold tracking-tight">
-          Blog
-        </h1>
-        <p className="text-muted-foreground text-lg">
-          Thoughts, insights, and guides on web development, design, and
-          technology.
-        </p>
-      </div>
+    <>
+      <Navbar />
+      <div className="container py-12 md:py-16">
+        <div className="max-w-3xl mx-auto text-center space-y-3 mb-12">
+          <h1 className="font-playfair text-4xl md:text-5xl font-bold tracking-tight">
+            Blog
+          </h1>
+          <p className="text-muted-foreground text-lg">
+            Thoughts, insights, and guides on web development, design, and
+            technology.
+          </p>
+        </div>
 
-      {/* Search and Filter */}
-      <div className="mb-12 flex flex-col md:flex-row gap-4">
-        <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-          <Input
-            placeholder="Search articles..."
-            className="pl-9 h-11"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+        {/* Search and Filter */}
+        <div className="mb-12 flex flex-col md:flex-row gap-4">
+          <div className="relative flex-1">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Input
+              placeholder="Search articles..."
+              className="pl-9 h-11"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+          <CategoriesSection
+            categories={categories}
+            selectedCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
           />
         </div>
-        <CategoriesSection
-          categories={categories}
-          selectedCategory={selectedCategory}
-          setSelectedCategory={setSelectedCategory}
-        />
-      </div>
 
-      {/* Results info */}
-      <div className="mb-6 text-sm text-muted-foreground">
-        Showing {startIndex + 1}-{Math.min(endIndex, filteredPosts.length)} of{" "}
-        {filteredPosts.length} articles
-        {selectedCategory !== "All Posts" && (
-          <span> in {selectedCategory}</span>
-        )}
-        {searchTerm && <span> matching {searchTerm}</span>}
-      </div>
+        {/* Results info */}
+        <div className="mb-6 text-sm text-muted-foreground">
+          Showing {startIndex + 1}-{Math.min(endIndex, filteredPosts.length)} of{" "}
+          {filteredPosts.length} articles
+          {selectedCategory !== "All Posts" && (
+            <span> in {selectedCategory}</span>
+          )}
+          {searchTerm && <span> matching {searchTerm}</span>}
+        </div>
 
-      {/* Blog Posts Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 min-h-[400px]">
-        {currentPosts.length > 0 ? (
-          currentPosts.map((post) => <BlogCard key={post._id} post={post} />)
-        ) : (
-          <div className="col-span-full text-center py-12">
-            <p className="text-muted-foreground text-lg">
-              {filteredPosts.length === 0 && posts.length > 0
-                ? "No articles match your search criteria."
-                : "No blog posts available at the moment."}
-            </p>
-            {(searchTerm || selectedCategory !== "All Posts") && (
+        {/* Blog Posts Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 min-h-[400px]">
+          {currentPosts.length > 0 ? (
+            currentPosts.map((post) => <BlogCard key={post._id} post={post} />)
+          ) : (
+            <div className="col-span-full text-center py-12">
+              <p className="text-muted-foreground text-lg">
+                {filteredPosts.length === 0 && posts.length > 0
+                  ? "No articles match your search criteria."
+                  : "No blog posts available at the moment."}
+              </p>
+              {(searchTerm || selectedCategory !== "All Posts") && (
+                <Button
+                  variant="outline"
+                  className="mt-4"
+                  onClick={() => {
+                    setSearchTerm("");
+                    setSelectedCategory("All Posts");
+                  }}
+                >
+                  Clear filters
+                </Button>
+              )}
+            </div>
+          )}
+        </div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex justify-center mt-12">
+            <div className="flex gap-1 items-center">
               <Button
                 variant="outline"
-                className="mt-4"
-                onClick={() => {
-                  setSearchTerm("");
-                  setSelectedCategory("All Posts");
-                }}
+                size="sm"
+                onClick={handlePrevious}
+                disabled={currentPage === 1}
+                className="h-9 px-3"
               >
-                Clear filters
+                <ChevronLeft className="h-4 w-4 mr-1" />
+                Previous
               </Button>
-            )}
+
+              {getPageNumbers().map((page, index) => (
+                <div key={index}>
+                  {page === "..." ? (
+                    <span className="px-3 py-2 text-muted-foreground">...</span>
+                  ) : (
+                    <Button
+                      variant={currentPage === page ? "default" : "outline"}
+                      size="sm"
+                      onClick={() => handlePageChange(page as number)}
+                      className="h-9 w-9"
+                    >
+                      {page}
+                    </Button>
+                  )}
+                </div>
+              ))}
+
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleNext}
+                disabled={currentPage === totalPages}
+                className="h-9 px-3"
+              >
+                Next
+                <ChevronRight className="h-4 w-4 ml-1" />
+              </Button>
+            </div>
+          </div>
+        )}
+
+        {/* Pagination info */}
+        {totalPages > 1 && (
+          <div className="text-center mt-4 text-sm text-muted-foreground">
+            Page {currentPage} of {totalPages}
           </div>
         )}
       </div>
-
-      {/* Pagination */}
-      {totalPages > 1 && (
-        <div className="flex justify-center mt-12">
-          <div className="flex gap-1 items-center">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={handlePrevious}
-              disabled={currentPage === 1}
-              className="h-9 px-3"
-            >
-              <ChevronLeft className="h-4 w-4 mr-1" />
-              Previous
-            </Button>
-
-            {getPageNumbers().map((page, index) => (
-              <div key={index}>
-                {page === "..." ? (
-                  <span className="px-3 py-2 text-muted-foreground">...</span>
-                ) : (
-                  <Button
-                    variant={currentPage === page ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => handlePageChange(page as number)}
-                    className="h-9 w-9"
-                  >
-                    {page}
-                  </Button>
-                )}
-              </div>
-            ))}
-
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={handleNext}
-              disabled={currentPage === totalPages}
-              className="h-9 px-3"
-            >
-              Next
-              <ChevronRight className="h-4 w-4 ml-1" />
-            </Button>
-          </div>
-        </div>
-      )}
-
-      {/* Pagination info */}
-      {totalPages > 1 && (
-        <div className="text-center mt-4 text-sm text-muted-foreground">
-          Page {currentPage} of {totalPages}
-        </div>
-      )}
-    </div>
+      <Footer />
+    </>
   );
 }
