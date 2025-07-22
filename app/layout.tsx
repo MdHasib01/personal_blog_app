@@ -33,19 +33,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="font-sans bg-background min-h-screen antialiased">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <div className="flex flex-col min-h-screen">
-            <main className="flex-1">{children}</main>
-
-            <Toaster />
-          </div>
-        </ThemeProvider>
+      <head>
         <Script
           id="structured-data"
           type="application/ld+json"
@@ -97,6 +85,20 @@ export default function RootLayout({
             }),
           }}
         />
+      </head>
+      <body className="font-sans bg-background min-h-screen antialiased">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="flex flex-col min-h-screen">
+            <main className="flex-1">{children}</main>
+
+            <Toaster />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
