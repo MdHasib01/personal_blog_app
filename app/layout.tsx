@@ -3,30 +3,6 @@ import type { Metadata } from "next";
 import Head from "next/head";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
-
-export const metadata: Metadata = {
-  title: "Chris Gray - Entrepreneur, Community Builder & Marketing Expert",
-  description:
-    "Meet Chris Gray, an entrepreneur, marketing expert, and founder of EARN CORE COMMUNITY. Learn about his business ventures, passions, and how he empowers 4,000+ entrepreneurs.",
-  openGraph: {
-    url: "https://yochrisgray.com/about",
-  },
-  twitter: {
-    card: "summary_large_image",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-  alternates: {
-    canonical: "https://yochrisgray.com/about",
-  },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-  },
-};
-
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -70,6 +46,31 @@ const structuredData = {
     "Podcasting",
   ],
   memberOf: "EARN CORE COMMUNITY",
+};
+export const metadata: Metadata = {
+  title: "Chris Gray - Entrepreneur, Community Builder & Marketing Expert",
+  description:
+    "Meet Chris Gray, an entrepreneur, marketing expert, and founder of EARN CORE COMMUNITY. Learn about his business ventures, passions, and how he empowers 4,000+ entrepreneurs.",
+  openGraph: {
+    url: "https://yochrisgray.com/about",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: "https://yochrisgray.com/about",
+  },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+  },
+  other: {
+    "application/ld+json": JSON.stringify(structuredData),
+  },
 };
 
 export default function RootLayout({
