@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -14,6 +14,18 @@ import { Switch } from "./ui/switch";
 import { useTheme } from "next-themes";
 const DashboardHeader = ({ group, item }) => {
   const { setTheme } = useTheme();
+  const [theme, setThemeState] = useState(null);
+  useEffect(() => {
+    const theme = localStorage.getItem("theme");
+    if (theme) {
+      setThemeState(theme);
+    }
+  }, []);
+  useEffect(() => {
+    if (theme) {
+      setTheme(theme);
+    }
+  }, [theme, setTheme]);
   return (
     <header className="flex h-16 shrink-0 items-center justify-between gap-2 px-4">
       <div className="flex items-center gap-2">
@@ -32,8 +44,11 @@ const DashboardHeader = ({ group, item }) => {
         </Breadcrumb>
       </div>
       <Switch
-        checked={localStorage.theme === "dark"}
-        onCheckedChange={(e) => setTheme(e ? "dark" : "light")}
+        checked={theme === "dark"}
+        onCheckedChange={(e) => {
+          setThemeState(e ? "dark" : "light");
+          localStorage.setItem("theme", e ? "dark" : "light");
+        }}
       />
     </header>
   );
