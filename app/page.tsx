@@ -227,8 +227,8 @@ export default async function Home() {
         {/* Featured Sections */}
         <FeaturedSection
           title="Latest Blog Posts"
-          description="Thoughts and insights on web development, design, and technology."
-          viewAllText="View all posts"
+          description="Entrepreneur, Community Builder & Marketing Expert."
+          viewAllText="View all blogs"
           viewAllLink="/blog"
           icon={<Newspaper className="h-5 w-5" />}
         >
