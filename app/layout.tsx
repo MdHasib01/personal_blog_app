@@ -8,7 +8,8 @@ const structuredData = {
   "@type": "Person",
   name: "Chris Gray",
   alternateName: "YoChrisGray",
-  image: "https://www.yochrisgray.com/_next/static/media/avatar.d61f74b2.jpg",
+  image:
+    "https://www.yochrisgray.com/_next/static/media/Chris Gray.d61f74b2.jpg",
   jobTitle: "Entrepreneur, Community Builder & Marketing Expert",
   sameAs: [
     "https://earncorecommunity.com/",
@@ -19,7 +20,7 @@ const structuredData = {
     "https://x.com/YoChrisGray",
     "https://www.linkedin.com/in/yochrisgray/",
   ],
-  url: "https://yochrisgray.com/about",
+  url: "https://yochrisgray.com",
   worksFor: [
     {
       "@type": "Organization",
@@ -52,7 +53,7 @@ export const metadata: Metadata = {
   description:
     "Meet Chris Gray, an entrepreneur, marketing expert, and founder of EARN CORE COMMUNITY. Learn about his business ventures, passions, and how he empowers 4,000+ entrepreneurs.",
   openGraph: {
-    url: "https://yochrisgray.com/about",
+    url: "https://yochrisgray.com",
   },
   twitter: {
     card: "summary_large_image",
@@ -62,14 +63,11 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: "https://yochrisgray.com/about",
+    canonical: "https://yochrisgray.com",
   },
   viewport: {
     width: "device-width",
     initialScale: 1,
-  },
-  other: {
-    "application/ld+json": JSON.stringify(structuredData),
   },
 };
 
