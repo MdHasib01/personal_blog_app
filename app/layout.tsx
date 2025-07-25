@@ -1,8 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import Head from "next/head";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
+
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -48,6 +48,7 @@ const structuredData = {
   ],
   memberOf: "EARN CORE COMMUNITY",
 };
+
 export const metadata: Metadata = {
   title: "Chris Gray - Entrepreneur, Community Builder & Marketing Expert",
   description:
@@ -78,14 +79,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <Head>
+      <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(structuredData),
           }}
         />
-      </Head>
+      </head>
       <body className="font-sans bg-background min-h-screen antialiased">
         <ThemeProvider
           attribute="class"
