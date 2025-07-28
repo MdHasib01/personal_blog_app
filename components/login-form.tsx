@@ -20,7 +20,7 @@ export function LoginForm({
     e.preventDefault();
     if (email === "admin@yochrisgray.com" && password === "password") {
       toast.success("Login successful");
-      router.push("/admin/dashboard");
+      router.push("/admin/dashboard/blog-posts");
     } else {
       toast.error("Invalid email or password");
     }
