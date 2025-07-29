@@ -1,11 +1,11 @@
 import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
-export async function POST(request) {
+export async function POST(request: Request) {
   try {
     const { slug, secret } = await request.json();
 
-    if (secret !== process.env.REVALIDATE_SECRET) {
+    if (secret !== "123") {
       return NextResponse.json({ message: "Invalid secret" }, { status: 401 });
     }
 
