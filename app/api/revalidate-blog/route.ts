@@ -1,27 +1,47 @@
 import { revalidatePath } from "next/cache";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(request: Request) {
+export const dynamic = "force-dynamic";
+
+interface RevalidateRequest {
+  slug: string;
+  secret: string;
+}
+
+export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
-    const { slug, secret } = await request.json();
+    const body: RevalidateRequest = await request.json();
+    const { slug, secret } = body;
 
-    if (secret !== "123") {
+    console.log("Received revalidation request:", { slug });
+
+    if (secret !== process.env.REVALIDATE_SECRET) {
       return NextResponse.json({ message: "Invalid secret" }, { status: 401 });
     }
 
-    revalidatePath(`/blog/${slug}`);
+    if (!slug || typeof slug !== "string") {
+      return NextResponse.json(
+        { message: "Invalid slug provided" },
+        { status: 400 }
+      );
+    }
 
+    revalidatePath(`/blog/${slug}`);
     revalidatePath("/blog");
 
     return NextResponse.json({
       revalidated: true,
-      message: `Blog post ${slug} revalidated successfully`,
+      message: `Successfully revalidated /blog/${slug}`,
+      timestamp: new Date().toISOString(),
     });
-  } catch (err) {
+  } catch (error) {
+    console.error("Revalidation error:", error);
+
     return NextResponse.json(
       {
         revalidated: false,
-        message: "Error revalidating",
+        error:
+          error instanceof Error ? error.message : "Unknown error occurred",
       },
       { status: 500 }
     );
