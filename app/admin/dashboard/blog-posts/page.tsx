@@ -9,9 +9,19 @@ import {
   Filter,
   MoreVertical,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
 // Custom table components since table is not available
 const Table = ({
   children,
@@ -88,6 +98,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import DashboardHeader from "@/components/header";
+import Link from "next/link";
 
 // Type definitions
 interface Blog {
@@ -115,7 +126,8 @@ export default function BlogDashboard() {
   const [selectedBlog, setSelectedBlog] = useState<Blog | null>(null);
   const [isViewDialogOpen, setIsViewDialogOpen] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
-
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedBlogId, setSelectedBlogId] = useState<string | null>(null);
   // Get unique categories
   const categories: string[] = [
     "all",
@@ -191,11 +203,17 @@ export default function BlogDashboard() {
     console.log("Edit blog:", id);
     // Implement edit functionality
   };
-
-  const handleDelete = (id: string) => {
-    if (window.confirm("Are you sure you want to delete this blog post?")) {
-      setBlogs((prev) => prev.filter((blog) => blog._id !== id));
-    }
+  const handleDelete = () => {
+    setBlogs((prev) => prev.filter((blog) => blog._id !== selectedBlogId));
+    setOpenModal(false);
+    setSelectedBlogId(null);
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts/${selectedBlogId}`, {
+      method: "DELETE",
+    });
+  };
+  const handleDeleteModal = (id: string) => {
+    setSelectedBlogId(id);
+    setOpenModal(true);
   };
 
   const handlePageChange = (page: number) => {
@@ -277,10 +295,12 @@ export default function BlogDashboard() {
             Manage your blog posts, view analytics, and create new content.
           </p>
         </div>
-        <Button className="bg-blue-600 hover:bg-blue-700">
-          <Plus className="mr-2 h-4 w-4" />
-          New Blog Post
-        </Button>
+        <Link href="/dashboard/create-post">
+          <Button className="bg-primary text-primary-foreground hover:bg-primary/80">
+            <Plus className="mr-2 h-4 w-4" />
+            New Blog Post
+          </Button>
+        </Link>
       </div>
 
       {/* Stats Cards */}
@@ -443,7 +463,7 @@ export default function BlogDashboard() {
                           Edit
                         </DropdownMenuItem>
                         <DropdownMenuItem
-                          onClick={() => handleDelete(blog._id)}
+                          onClick={() => handleDeleteModal(blog._id)}
                           className="text-red-600"
                         >
                           <Trash2 className="mr-2 h-4 w-4" />
@@ -458,7 +478,23 @@ export default function BlogDashboard() {
           </Table>
         </CardContent>
       </Card>
-
+      <AlertDialog open={openModal} onOpenChange={setOpenModal}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete your
+              account and remove your data from our servers.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={handleDelete}>
+              Confirm
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
       {/* Pagination */}
       {totalPages > 1 && (
         <div className="flex justify-center mt-8">
