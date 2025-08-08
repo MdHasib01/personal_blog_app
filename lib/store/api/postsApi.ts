@@ -30,6 +30,16 @@ export const postsApi = createApi({
         body: { title },
       }),
     }),
+    generateSummary: builder.mutation<
+      { summary: string },
+      { title: string; content: string }
+    >({
+      query: ({ title, content }) => ({
+        url: "/generate-summary",
+        method: "POST",
+        body: { title, content },
+      }),
+    }),
   }),
 });
 
@@ -37,4 +47,5 @@ export const {
   useCreatePostMutation,
   useGenerateImageMutation,
   useGenerateContentMutation,
+  useGenerateSummaryMutation,
 } = postsApi;
