@@ -99,6 +99,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import DashboardHeader from "@/components/header";
 import Link from "next/link";
+import axios from "axios";
 
 // Type definitions
 interface Blog {
@@ -139,15 +140,16 @@ export default function BlogDashboard() {
   useEffect(() => {
     async function fetchPosts() {
       try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/posts`
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/posts`,
+          { withCredentials: true }
         );
 
-        if (!response.ok) {
+        if (response.status !== 200) {
           throw new Error(`Failed to fetch posts: ${response.status}`);
         }
 
-        const postsData: Blog[] = await response.json();
+        const postsData: Blog[] = response.data;
         setBlogs(postsData);
       } catch (error) {
         console.error("Error fetching posts:", error);

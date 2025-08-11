@@ -9,6 +9,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 export function LoginForm({
   className,
   ...props
@@ -16,13 +17,24 @@ export function LoginForm({
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email === "admin@yochrisgray.com" && password === "password") {
+
+    try {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/user/login`,
+        {
+          email,
+          password,
+        },
+        { withCredentials: true }
+      );
+
       toast.success("Login successful");
       router.push("/admin/dashboard/blog-posts");
-    } else {
+    } catch (error) {
       toast.error("Invalid email or password");
+      console.log(error);
     }
   };
   return (
@@ -82,7 +94,7 @@ export function LoginForm({
             <Image
               src={img}
               alt="Image"
-              className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+              className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.5] "
             />
           </div>
         </CardContent>
