@@ -86,10 +86,31 @@ async function getVideos(): Promise<Video[]> {
     return [];
   }
 }
+async function getPodcast(): Promise<Video[]> {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/youtube/featured-podcasts`,
+      {
+        next: { revalidate: 3600 },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch videos: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data.videos || [];
+  } catch (error) {
+    console.error("Error fetching videos:", error);
+    return [];
+  }
+}
 
 export default async function Home() {
   const featuredPosts = await getPosts();
   const featuredVideos = await getVideos();
+  const featuredPodcast = await getPodcast();
 
   return (
     <>
@@ -223,6 +244,20 @@ export default async function Home() {
             <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
           </div>
         </section>
+        <FeaturedSection
+          title="Featured Podcasts"
+          description="Featured podcast episodes and video content on entrepreneurship, tech, and life insights."
+          viewAllLink="/"
+          viewAllText="View all podcasts"
+          icon={<Video className="h-5 w-5" />}
+          variant="secondary"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {featuredPodcast.slice(0, 3).map((video) => (
+              <VideoCard key={video._id} video={video} />
+            ))}
+          </div>
+        </FeaturedSection>
 
         {/* Featured Sections */}
         <FeaturedSection
@@ -240,7 +275,7 @@ export default async function Home() {
         </FeaturedSection>
 
         <FeaturedSection
-          title="Featured Podcasts"
+          title="Latest Uploads"
           description="Latest podcast episodes and video content on entrepreneurship, tech, and life insights."
           viewAllText="View all podcasts"
           viewAllLink="/podcasts"
