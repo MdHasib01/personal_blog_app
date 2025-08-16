@@ -23,6 +23,7 @@ import { FaTiktok } from "react-icons/fa";
 import NewsletterInput from "@/components/newsletterInput";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import FeaturedOnPodcasts from "@/components/featured-on-podcasts";
 interface Post {
   _id: string;
   title: string;
@@ -244,6 +245,8 @@ export default async function Home() {
             <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
           </div>
         </section>
+        <FeaturedOnPodcasts />
+
         <FeaturedSection
           title="Featured Podcasts"
           description="Featured podcast episodes and video content on entrepreneurship, tech, and life insights."
