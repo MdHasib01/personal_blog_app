@@ -52,7 +52,7 @@ const NewsletterInput = () => {
   }
   return (
     <div>
-      <Label>Subscribe to newsletter</Label>
+      <Label className=" md:text-xl text-xl">Subscribe to newsletter</Label>
       <form
         onSubmit={(e) => SubscribeToNewsletter(e)}
         className="flex flex-col sm:flex-row   gap-3 md:max-w-md max-w-sm mx-auto lg:mx-0 my-2"
